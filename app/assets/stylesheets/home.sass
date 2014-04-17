@@ -18,10 +18,11 @@ article
         h1
             bottom: 60%
             font-size: 4em
+            line-height: .75em
         h2
             font-size: 1.4em
             font-weight: $heavy
-            margin-top: 0
+            margin-top: .25em
             top: 40%
 
         .classes
@@ -66,72 +67,12 @@ article
     section.info aside
         text-align: center
 
-    section.pic
-        background: image-url('home-pic-bg.jpg') 50% 100% no-repeat
-        +bg_size(cover)
-        height: 700px
-
     section.classes
         background: image-url('home-classes-bg.jpg') 100% 100% no-repeat
         padding-bottom: 300px
         text-align: left
 
-    section.quote
-        background: image-url('home-quote-bg.jpg') 50% 100% no-repeat
-        +bg_size(cover)
-        overflow: hidden
-        &:before,
-        &:after
-            background: image-url('anglebar-cream.png') 0 0 no-repeat
-            content: ''
-            height: 452px
-            position: absolute
-            visibility: visible
-            width: 452px
-            z-index: 1
-        &:before
-            bottom: 475px
-            left: 50%
-            margin-left: 125px
-        &:after
-            margin-right: 125px
-            right: 50%
-            top: 475px
-        .wrapper
-            height: 600px
-            max-height: 600px
-        .quote
-            font-size: 3em
-            line-height: 1em
-            margin-top: -100px
-            position: absolute
-            right: -25px
-            text-align: left
-            top: 50%
-            z-index: 2
-            q
-                color: #fff
-                display: block
-                font-weight: $light
-                text-shadow: 0 1px 1px #000
-            cite
-                color: #9b9f98
-                display: block
-                font-size: .5em
-                font-weight: $heavy
-                margin-top: .25em
-
 @media screen and (max-width: 1599px)
     article section.classes
         background-position: 50% 100%
-
-@media screen and (max-width: 959px)
-    article section.quote
-        background-position: 40% 100%
-        .quote
-            font-size: 2.5em
-
-@media screen and (max-width: 679px)
-    article section.quote .quote
-        font-size: 2em
 
