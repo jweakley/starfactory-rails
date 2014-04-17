@@ -12,7 +12,13 @@
 
   %body{ class: body_classes }
     %header
-      = link_to 'Starfactory', root_url
+      .wrapper
+        = link_to root_url, class: 'brand' do
+          = image_tag 'starfactory-logo@636x132.png', alt: 'Starfactory'
+        %nav
+          = link_to 'Classes', '#'
+          = link_to 'Students', '#'
+          = link_to 'Contact', '#'
 
     %article
       %nav.breadcrumbs= render_breadcrumbs

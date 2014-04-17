@@ -1,1 +1,100 @@
 header
+    background: #e9ece6
+    left: 0
+    position: absolute
+    right: 0
+    top: 0
+    +transition(box-shadow .2s linear)
+    z-index: 9
+    .wrapper
+        height: 200px
+    .brand
+        bottom: -16px
+        height: 66px
+        left: 15px
+        overflow: hidden
+        position: absolute
+        text-indent: -999em
+        width: 318px
+        z-index: 9
+        img
+            display: block
+            height: 66px
+            left: 0
+            position: absolute
+            top: 0
+            width: 318px
+    nav
+        bottom: 0
+        line-height: 60px
+        position: absolute
+        right: 15px
+        a
+            text-transform: lowercase
+
+body.fixedHeader header,
+body.touchEnabled header
+    +box_shadow(0 0 60px rgba(#000,.1))
+    position: fixed
+    top: -140px
+
+@media screen and (min-width: 600px)
+    header nav
+        vertical-align: bottom
+        a
+            color: #9b9f98
+            display: inline-block
+            padding: 0 15px
+            &:hover,
+            &:focus
+                color: #402E48
+                border-top: 3px solid #5CB1BE
+
+@media screen and (max-width: 599px)
+    header nav
+        bottom: auto
+        cursor: pointer
+        font-size: 1.25em
+        height: 0
+        overflow: hidden
+        padding: 60px 0 0
+        right: 0
+        text-indent: -999em
+        top: 140px
+        width: 60px
+        &:before
+            content: '\f0c9'
+            height: 60px
+            line-height: 60px
+            position: absolute
+            right: 0
+            text-align: center
+            text-indent: 0
+            top: 0
+            width: 60px
+    header nav.open
+        height: auto
+        overflow: visible
+        text-indent: 0
+        left: 0
+        right: 0
+        width: auto
+        &:after
+            border: 10px solid transparent
+            border-bottom-color: #402e48
+            content: ''
+            position: absolute
+            right: 15px
+            top: 30px
+        a
+            background: #402e48
+            color: #fff
+            display: block
+            line-height: 1em
+            padding: 1em
+            text-shadow: 0 1px 1px #000
+            &:hover,
+            &:focus
+                background: #2e2133
+        a ~ a
+            border-top: 1px solid #2e2133

@@ -1,9 +1,13 @@
 article
+    left: 0
+    position: absolute
+    right: 0
+    top: 200px
     section
+        +box_sizing(border-box)
         line-height: 1.4em
-        margin: 0 auto
-        max-width: 1100px
         padding: 50px
+        position: relative
         &:after
             +clear_fix()
         aside
@@ -53,5 +57,6 @@ article
         ~h1, ~h2, ~h3, ~p, ~blockquote, ~dl, ~ul, ~ol
             margin-top: 1em
 
-    section.info aside
-        text-align: center
+body.tooSmall article,
+body.touchEnabled article
+    top: 50px
