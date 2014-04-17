@@ -27,10 +27,10 @@
       - elsif !!notice
         %mark#flash.notice= notice
       = yield
-
-    %footer
-      = link_to 'Find a Class', '#'
-      %mark Copyright &copy; #{Time.now.year} Starfactory.co
+      %footer
+        .wrapper
+          .classes= link_to 'Find a Class', '#'
+          .legal Copyright &copy; #{Time.now.year} Starfactory.co
 
     = javascript_include_tag 'application'
     = yield :footer
