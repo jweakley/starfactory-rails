@@ -23,7 +23,8 @@
       = yield
 
     %footer
-      Copyright &copy; #{Time.now.year} Starfactory.co
+      = link_to 'Find a Class', '#'
+      %mark Copyright &copy; #{Time.now.year} Starfactory.co
 
     = javascript_include_tag 'application'
     = yield :footer
