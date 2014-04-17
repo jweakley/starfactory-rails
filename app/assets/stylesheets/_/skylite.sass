@@ -1,0 +1,87 @@
+body.busy:after,
+#mask
+    bottom: 0
+    left: 0
+    position: fixed
+    right: 0
+    top: 0
+    z-index: 97
+
+#mask:after
+    background: #000
+    bottom: 0
+    content: ''
+    left: 0
+    +opacity(.8)
+    position: absolute
+    right: 0
+    top: 0
+
+body:after
+    background: image-url('busy.gif') 50% 50% no-repeat #000
+    +opacity(.8)
+
+body.busy:after
+    content: ''
+
+body.busy:before
+    bottom: 50%
+    color: #fff
+    content: attr(data-busy)
+    font: 4em Sintony, sans-serif
+    font-weight: 200
+    left: 0
+    line-height: 1em
+    margin: 0 0 70px
+    position: fixed
+    right: 0
+    text-align: center
+    z-index: 98
+
+body.busy.hasMask
+    &:before,
+    &:after
+        display: none
+
+body > .modal
+    background: #fff
+    +box_shadow(0 0 50px rgba(#120E0A,.7))
+    display: none
+    left: 50%
+    margin: -100px 0 0 -300px
+    padding: 50px
+    position: fixed
+    text-align: left
+    top: 30%
+    width: 500px
+    z-index: 99
+    h1
+        color: #2b75a7
+        font-size: 2em
+        font-weight: 200
+        line-height: 1em
+        text-transform: capitalize
+        + p
+            margin-top: 2em
+    p
+        font-size: 1.1em
+    .actions
+        background: #DEECF2
+        margin: 50px -50px -50px
+        padding: 10px
+        text-align: center
+        button + button
+            margin-left: 10px
+
+body > .modal.active
+    display: block
+
+@media screen and (max-width: 620px)
+    body.hasMask > header
+        +filter(none)
+    body > .modal
+        height: auto
+        left: 10px
+        margin-left: 0
+        right: 10px
+        width: auto

@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %title Starfactory
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=0.5' }
+    = stylesheet_link_tag '//fonts.googleapis.com/css?family=Raleway:100,300,600'
+    = stylesheet_link_tag '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'
+    = stylesheet_link_tag 'application', media: :all
+    = yield :header
+    = favicon_link_tag asset_path('favicon.png')
+    = csrf_meta_tags
+
+  %body{ class: body_classes }
+    %header
+      = link_to 'Starfactory', root_url
+
+    %article
+      %nav.breadcrumbs= render_breadcrumbs
+      - if !!error
+        %mark#flash.error= error
+      - elsif !!notice
+        %mark#flash.notice= notice
+      = yield
+
+    %footer
+      Copyright &copy; #{Time.now.year} Starfactory.co
+
+    = javascript_include_tag 'application'
+    = yield :footer
