@@ -18,7 +18,7 @@ jQuery(document).ready ($) ->
     # Fixed header menu on scroll
     toggleFixeHeader = ->
         scrolled = $(window).scrollTop() >= 140
-        tooSmall = $(window).height() < 600 or $(window).width() < 600
+        tooSmall = $(window).height() < 680 or $(window).width() < 680
         $('body').toggleClass 'tooSmall', tooSmall
         $('body').toggleClass 'fixedHeader', scrolled or tooSmall or $.touchEnabled
 

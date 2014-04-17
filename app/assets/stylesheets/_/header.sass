@@ -16,7 +16,6 @@ header
         position: absolute
         text-indent: -999em
         width: 318px
-        z-index: 9
         img
             display: block
             height: 66px
@@ -38,7 +37,7 @@ body.touchEnabled header
     position: fixed
     top: -140px
 
-@media screen and (min-width: 600px)
+@media screen and (min-width: 680px)
     header nav
         vertical-align: bottom
         a
@@ -50,7 +49,7 @@ body.touchEnabled header
                 color: #402E48
                 border-top: 3px solid #5CB1BE
 
-@media screen and (max-width: 599px)
+@media screen and (max-width: 679px)
     header nav
         bottom: auto
         cursor: pointer
@@ -64,6 +63,7 @@ body.touchEnabled header
         width: 60px
         &:before
             content: '\f0c9'
+            font-size: 1.2em
             height: 60px
             line-height: 60px
             position: absolute
@@ -84,15 +84,15 @@ body.touchEnabled header
             border-bottom-color: #402e48
             content: ''
             position: absolute
-            right: 15px
-            top: 30px
+            right: 20px
+            top: 40px
         a
             background: #402e48
             color: #fff
             display: block
             line-height: 1em
             padding: 1em
-            text-shadow: 0 1px 1px #000
+            text-shadow: 0 -1px 1px #000
             &:hover,
             &:focus
                 background: #2e2133

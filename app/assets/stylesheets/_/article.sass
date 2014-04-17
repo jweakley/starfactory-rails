@@ -12,13 +12,6 @@ article
             +clear_fix()
         aside
             padding: 50px 0
-            text-align: left
-            width: 45%
-            &:nth-child(odd)
-                clear: both
-                float: left
-            &:nth-child(even)
-                float: right
     a
         color: #e2655b
         font-weight: $heavy
@@ -45,6 +38,9 @@ article
             position: absolute
             text-align: right
             width: 3em
+    ul,
+    ol
+        text-align: left
     ul > li:before
         content: '\f006'
     ol > li
@@ -60,3 +56,13 @@ article
 body.tooSmall article,
 body.touchEnabled article
     top: 50px
+
+@media screen and (min-width: 680px)
+    article section aside
+        text-align: left
+        width: 45%
+        &:nth-child(odd)
+            clear: both
+            float: left
+        &:nth-child(even)
+            float: right
