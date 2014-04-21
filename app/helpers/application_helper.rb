@@ -13,4 +13,8 @@ module ApplicationHelper
   def under_camel(string)
     string.gsub(/[^a-z]/i,'_').camelize(:lower)
   end
+
+  def text_to_html(text)
+    return sanitize Kramdown::Document.new(text).to_html
+  end
 end

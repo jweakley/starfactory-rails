@@ -6,7 +6,10 @@ Starfactory::Application.routes.draw do
 
   resources :users
   resources :sessions
+  resources :instructor_profiles, path: 'instructors'
+  resources :student_profiles, path: 'students'
   resources :tracks
+  resources :workshops
 
   root 'static#index'
 end

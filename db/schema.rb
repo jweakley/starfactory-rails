@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140421180837) do
+ActiveRecord::Schema.define(version: 20140421215843) do
 
   create_table "admin_profiles", force: true do |t|
     t.string   "name"
@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(version: 20140421180837) do
 
   add_index "instructor_profiles", ["user_id"], name: "index_instructor_profiles_on_user_id"
 
+  create_table "instructor_profiles_workshops", force: true do |t|
+    t.integer  "instructor_profile_id"
+    t.integer  "workshop_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "instructor_profiles_workshops", ["instructor_profile_id", "workshop_id"], name: "rel_instructor_profiles_workshops", unique: true
+
   create_table "student_profiles", force: true do |t|
     t.string   "name"
     t.text     "bio"
@@ -58,6 +67,15 @@ ActiveRecord::Schema.define(version: 20140421180837) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "tracks_workshops", force: true do |t|
+    t.integer  "track_id"
+    t.integer  "workshop_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tracks_workshops", ["track_id", "workshop_id"], name: "rel_tracks_workshops", unique: true
 
   create_table "users", force: true do |t|
     t.string   "email",                                       null: false
@@ -88,8 +106,6 @@ ActiveRecord::Schema.define(version: 20140421180837) do
     t.string   "status"
     t.string   "banner"
     t.string   "icon"
-    t.integer  "track_id"
-    t.integer  "instructor_profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

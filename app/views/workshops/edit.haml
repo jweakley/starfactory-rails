@@ -1,0 +1,7 @@
+%section
+  .wrapper
+    %h1 Editing Workshop
+    = form_for @workshop do |f|
+      = render 'fields', f: f
+      .submit
+        = button_tag 'Save'

@@ -1,0 +1,7 @@
+%section
+  .wrapper
+    %h1 New Workshop
+    = form_for @workshop do |f|
+      = render 'fields', f: f
+      .submit
+        = button_tag 'Submit'

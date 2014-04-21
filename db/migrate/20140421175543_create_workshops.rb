@@ -6,8 +6,6 @@ class CreateWorkshops < ActiveRecord::Migration
       t.string :status
       t.string :banner
       t.string :icon
-      t.integer :track_id
-      t.integer :instructor_profile_id
 
       t.timestamps
     end

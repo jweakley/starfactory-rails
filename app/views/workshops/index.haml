@@ -1,0 +1,9 @@
+%section
+  .wrapper
+    %h1 Workshops
+    - if @workshops.any?
+      %ul
+        - @workshops.each do |workshop|
+          %li= link_to workshop.name, workshop
+    - else
+      %p Oh no! There don't appear to be any workshops available.

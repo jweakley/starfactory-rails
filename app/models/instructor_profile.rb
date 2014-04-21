@@ -13,7 +13,8 @@
 
 class InstructorProfile < ActiveRecord::Base
   belongs_to :user, inverse_of: :instructor_profile
-  has_many :tracks
+  has_many :instructor_profiles_workshops
+  has_many :workshops, through: :instructor_profiles_workshops
 
   delegate :email, to: :user, allow_nil: true
 

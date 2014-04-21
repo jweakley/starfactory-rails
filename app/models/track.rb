@@ -10,7 +10,8 @@
 #
 
 class Track < ActiveRecord::Base
-  has_many :workshops
+  has_many :tracks_workshops
+  has_many :workshops, through: :tracks_workshops
 
   VALID_STATUSES = %w(Active Disabled)
 
