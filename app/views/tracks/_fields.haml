@@ -1,0 +1,6 @@
+.field
+  = f.label :name
+  = f.text_field :name
+.field
+  = f.label :status
+  = f.select :status, Track::VALID_STATUSES

@@ -13,6 +13,8 @@
 
 class InstructorProfile < ActiveRecord::Base
   belongs_to :user, inverse_of: :instructor_profile
+  has_many :tracks
+
   delegate :email, to: :user, allow_nil: true
 
   accepts_nested_attributes_for :user

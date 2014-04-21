@@ -1,0 +1,9 @@
+%section
+  .wrapper
+    %h1 Tracks
+    - if @tracks.any?
+      %ul
+        - @tracks.each do |track|
+          %li= link_to track.name, track
+    - else
+      %p Oh no! There don't appear to be any active tracks available.

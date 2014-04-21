@@ -10,4 +10,9 @@
 #
 
 class Track < ActiveRecord::Base
+  has_many :workshops
+
+  VALID_STATUSES = %w(Active Disabled)
+
+  scope :active, -> { where { status.eq 'Active' } }
 end

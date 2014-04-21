@@ -15,4 +15,6 @@
 #
 
 class Workshop < ActiveRecord::Base
+  has_one :track
+  has_many :instructor_profiles
 end
