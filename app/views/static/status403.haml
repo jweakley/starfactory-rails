@@ -3,5 +3,6 @@
     %h1 Forbidden
     %p
       Looks like you don't have permission to do that.
-      Usually this just means you forgot to
-      #{link_to 'login', login_url}.
+      - unless logged_in?
+        Usually this just means you forgot to
+        #{link_to 'login', login_url}.

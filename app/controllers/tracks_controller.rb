@@ -1,13 +1,17 @@
 class TracksController < ApplicationController
   respond_to :html
 
-  before_action :load_and_auth_track, only: [:show, :edit, :update, :destroy]
+  before_action :load_track, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb 'Tracks', :tracks_url
 
   # GET /tracks
   def index
-    @tracks = Track.page params[:page]
+    if logged_in? && current_user.admin?
+      @tracks = Track.page params[:page]
+    else
+      @tracks = Track.active.page params[:page]
+    end
     authorize @tracks
     respond_with @tracks
   end
@@ -15,14 +19,15 @@ class TracksController < ApplicationController
   # GET /tracks/1
   def show
     add_breadcrumb @track.name
+    authorize @track
     respond_with @track
   end
 
   # GET /tracks/new
   def new
     @track = policy_scope(Track).new
-    authorize @track
     add_breadcrumb 'New'
+    authorize @track
     respond_with @track
   end
 
@@ -30,6 +35,7 @@ class TracksController < ApplicationController
   def edit
     add_breadcrumb @track.name, track_url(@track)
     add_breadcrumb 'Edit'
+    authorize @track
     respond_with @track
   end
 
@@ -54,9 +60,8 @@ class TracksController < ApplicationController
   end
 
 private
-  def load_and_auth_track
+  def load_track
     @track = Track.find(params[:id])
-    authorize @track
   end
 
   def track_params

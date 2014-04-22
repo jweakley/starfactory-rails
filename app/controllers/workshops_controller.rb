@@ -1,13 +1,17 @@
 class WorkshopsController < ApplicationController
   respond_to :html
 
-  before_action :load_and_auth_workshop, only: [:show, :edit, :update, :destroy]
+  before_action :load_workshop, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb 'Workshops', :workshops_url
 
   # GET /workshops
   def index
-    @workshops = Workshop.page params[:page]
+    if logged_in? && current_user.admin?
+      @workshops = Workshop.page params[:page]
+    else
+      @workshops = Workshop.active.page params[:page]
+    end
     authorize @workshops
     respond_with @workshops
   end
@@ -15,14 +19,15 @@ class WorkshopsController < ApplicationController
   # GET /workshops/1
   def show
     add_breadcrumb @workshop.name
+    authorize @workshop
     respond_with @workshop
   end
 
   # GET /workshops/new
   def new
     @workshop = policy_scope(Workshop).new
-    authorize @workshop
     add_breadcrumb 'New'
+    authorize @workshop
     respond_with @workshop
   end
 
@@ -30,6 +35,7 @@ class WorkshopsController < ApplicationController
   def edit
     add_breadcrumb @workshop.name, workshop_url(@workshop)
     add_breadcrumb 'Edit'
+    authorize @workshop
     respond_with @workshop
   end
 
@@ -54,9 +60,8 @@ class WorkshopsController < ApplicationController
   end
 
 private
-  def load_and_auth_workshop
+  def load_workshop
     @workshop = Workshop.find(params[:id])
-    authorize @workshop
   end
 
   def workshop_params

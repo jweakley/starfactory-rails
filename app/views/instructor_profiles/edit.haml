@@ -1,0 +1,7 @@
+%section
+  .wrapper
+    %h1 Editing Instructor Profile
+    = form_for @instructor_profile do |f|
+      = render 'fields', f: f
+      .actions
+        = button_tag 'Save'

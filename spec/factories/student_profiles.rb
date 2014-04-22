@@ -17,5 +17,6 @@ FactoryGirl.define do
   factory :student_profile do
     user
     name 'Some Student'
+    bio ''
   end
 end

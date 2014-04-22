@@ -14,7 +14,6 @@ private
     policy_name = exception.policy.class.to_s.underscore
     error = I18n.t "pundit.#{policy_name}.#{exception.query}", default: ''
     flash[:error] = error unless error.blank?
-    add_breadcrumb 'Status 403'
     render 'static/status403'
   end
 end

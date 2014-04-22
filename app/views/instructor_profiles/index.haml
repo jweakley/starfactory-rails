@@ -1,0 +1,23 @@
+%section
+  .wrapper
+    %h1 Instructor Profiles
+    %table
+      %thead
+        %tr
+          %th Name
+          %th Email
+          %th Workshops
+          %th
+      - if @instructor_profiles.total_pages > 1
+        %tfoot
+          %th{ colspan: 4 }= paginate @instructor_profiles
+      %tbody
+        - @instructor_profiles.each do |instructor_profile|
+          %tr
+            %td= link_to instructor_profile.name, instructor_profile
+            %td= link_to instructor_profile.email, "mailto:#{instructor_profile.email}"
+            %td= instructor_profile.workshops.count
+            %td.actions
+              %div
+                - if logged_in? && current_user.admin?
+                  = link_to instructor_profile.name, edit_instructor_profile_url(instructor_profile), class: 'edit'

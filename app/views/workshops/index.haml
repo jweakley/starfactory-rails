@@ -31,4 +31,5 @@
             %td= workshop.status
             %td.actions
               %div
-                = link_to workshop.name, edit_workshop_url(workshop), class: 'edit'
+                - if logged_in? && current_user.admin?
+                  = link_to workshop.name, edit_workshop_url(workshop), class: 'edit'

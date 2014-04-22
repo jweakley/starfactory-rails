@@ -1,4 +1,4 @@
-FactoryGirl.create(:admin_instructor_user,
+FactoryGirl.create(:admin_user,
   name: 'Doug Waltman', email: 'doug@dougwaltman.com')
 
 (1..2).each { |n| FactoryGirl.create(:instructor_user,

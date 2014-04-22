@@ -17,8 +17,11 @@
           = image_tag 'starfactory-logo@636x132.png', alt: 'Starfactory'
         %nav
           = link_to 'Classes', root_url(anchor: 'tracks')
-          = link_to 'Students', login_url
+          - unless logged_in?
+            = link_to 'Students', login_url
           = link_to 'Contact', '#'
+          - if logged_in?
+            = link_to 'Logout', logout_url
 
     %article
       - unless current_page? root_url
