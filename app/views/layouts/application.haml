@@ -19,11 +19,11 @@
           = link_to 'Classes', '#'
           = link_to 'Students', '#'
           = link_to 'Contact', '#'
-        - if logged_in? && current_user.admin?
-          = render 'layouts/admin_menu'
 
     %article
-      %nav.breadcrumbs= render_breadcrumbs
+      - unless current_page? root_url
+        %nav.breadcrumbs
+          .wrapper= render_breadcrumbs separator: ' / '
       - if !!error
         %mark#flash.error= error
       - elsif !!notice

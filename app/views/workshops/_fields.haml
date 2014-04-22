@@ -4,13 +4,13 @@
 %fieldset
   %legend Tracks
   = f.collection_check_boxes :track_ids, Track.active, :id, :name do |c|
-    .field
+    .field.checkbox
       = c.check_box
       = c.label
 %fieldset
   %legend Instructors
   = f.collection_check_boxes :instructor_profile_ids, InstructorProfile.all, :id, :name do |c|
-    .field
+    .field.checkbox
       = c.check_box
       = c.label
 .field
