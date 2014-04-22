@@ -1,13 +1,13 @@
 class WorkshopsController < ApplicationController
   respond_to :html
 
-  before_action :set_workshop, only: [:show, :edit, :update, :destroy]
+  before_action :load_and_auth_workshop, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb 'Workshops', :workshops_url
 
   # GET /workshops
   def index
-    @workshops = Workshop.active
+    @workshops = Workshop.page params[:page]
     authorize @workshops
     respond_with @workshops
   end
@@ -15,15 +15,14 @@ class WorkshopsController < ApplicationController
   # GET /workshops/1
   def show
     add_breadcrumb @workshop.name
-    authorize @workshop
     respond_with @workshop
   end
 
   # GET /workshops/new
   def new
-    add_breadcrumb 'New'
     @workshop = policy_scope(Workshop).new
     authorize @workshop
+    add_breadcrumb 'New'
     respond_with @workshop
   end
 
@@ -31,7 +30,6 @@ class WorkshopsController < ApplicationController
   def edit
     add_breadcrumb @workshop.name, workshop_url(@workshop)
     add_breadcrumb 'Edit'
-    authorize @workshop
     respond_with @workshop
   end
 
@@ -45,21 +43,20 @@ class WorkshopsController < ApplicationController
 
   # PATCH/PUT /workshops/1
   def update
-    authorize @workshop
     @workshop.update(workshop_params)
     respond_with @workshop, location: @workshop, error: 'Unable to add workshop.'
   end
 
   # DELETE /workshops/1
   def destroy
-    authorize @workshop
     @workshop.destroy
     respond_with @workshop, location: @workshop, error: 'Unable to remove workshop.'
   end
 
 private
-  def set_workshop
+  def load_and_auth_workshop
     @workshop = Workshop.find(params[:id])
+    authorize @workshop
   end
 
   def workshop_params

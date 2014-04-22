@@ -4,30 +4,31 @@
 %section.landing
   %h1 Learn how to web
   %h2 Hands-on instruction from the pros
-  .classes= link_to 'Classes', '#'
+  .classes= link_to 'Classes', root_url(anchor: 'tracks')
 
 %section.info
   .wrapper
-    %aside
-      %h1 Fun
-      %p
-        Being a jack of all trades almost feels like a requirement when it comes
-        to building a website. If learning is a requirement, then
-      %p
-        %strong
-          Learning
-          %em should
-          be fun.
-    %aside
-      %h1 Easy
-      %p
-        With so many free resources out there, you’d think learning new stuff
-        would be easy. Unfortunately, that’s not always the case.
-      %p
-        %strong
-          Learning
-          %em should
-          be easy.
+    .columns
+      %aside
+        %h1 Fun
+        %p
+          Being a jack of all trades almost feels like a requirement when it comes
+          to building a website. If learning is a requirement, then
+        %p
+          %strong
+            Learning
+            %em should
+            be fun.
+      %aside
+        %h1 Easy
+        %p
+          With so many free resources out there, you’d think learning new stuff
+          would be easy. Unfortunately, that’s not always the case.
+        %p
+          %strong
+            Learning
+            %em should
+            be easy.
 
 %section.quote.bike
   .wrapper
@@ -35,7 +36,7 @@
       %q Somewhere, something incredible is waiting to be known.
       %cite —Carl Sagan
 
-%section.classes
+%section.tracks#tracks
   .wrapper
     %h1 Level up
     %p
@@ -44,38 +45,16 @@
       A maxium class size of 10 means no getting ignored&mdash;no drowning.
       Attend any of the available tracks, or pick and choose what you need to
       brush up on.
-    %aside
-      %h2 General
-      %ul
-        %li= link_to 'Symantic HTML', '#'
-        %li= link_to 'Intro to Programming', '#'
-        %li= link_to 'Using Git & Github', '#'
-      %h2 JavaScript
-      %ul
-        %li= link_to 'Intro to JavaScript', '#'
-        %li= link_to 'JS: DOM Manipulation', '#'
-        %li= link_to 'JS: Functions', '#'
-        %li= link_to 'JS: Events', '#'
-        %li= link_to 'JS: Advanced Concepts', '#'
-        %li= link_to 'JS: Frameworks', '#'
-        %li= link_to 'Intro to CoffeeScript', '#'
-      %h2 Ruby on Rails
-      %ul
-        %li= link_to 'Intro to Ruby', '#'
-        %li= link_to 'Intro to Rails', '#'
-        %li= link_to 'Your First Rails App', '#'
-    %aside
-      %h2 CSS
-      %ul
-        %li= link_to 'Intro to CSS', '#'
-        %li= link_to 'Advanced CSS Concepts 1', '#'
-        %li= link_to 'Advanced CSS Concepts 2', '#'
-      %h2 WordPress
-      %ul
-        %li= link_to 'Intro to WordPress', '#'
-        %li= link_to 'Intro to PHP', '#'
-        %li= link_to 'Your First WordPress Theme', '#'
-        %li= link_to 'Your First WordPress Plugin', '#'
+    .columns
+      - @tracks.each do |track|
+        %aside
+          %h2= link_to track.name, track
+          - if track.workshops.any?
+            %ul
+              - track.workshops.each do |workshop|
+                %li= link_to workshop.name, workshop
+          - else
+            %p This track does not have any classes yet.
 
 %section.quote.cave
   .wrapper

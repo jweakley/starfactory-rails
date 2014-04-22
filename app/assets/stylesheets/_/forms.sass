@@ -8,7 +8,7 @@ input[type="submit"]
     font-weight: $heavy
     line-height: 2em
     padding: 0 2em
-    text-decoration: none
+    text-decoration: none !important
     vertical-align: middle
     white-space: nowrap
     &:hover,
@@ -31,7 +31,7 @@ form
 
     label
         color: #5CB1BE
-        display: block
+        display: inline-block
         font-size: 1.8em
         font-weight: $light
         margin: 0 0 .5em
@@ -48,7 +48,6 @@ form
             font-weight: $light
         label
             color: #5a5e57
-            display: inline-block
             font-size: 1em
             font-weight: $regular
             margin: 0 0 0 .5em
@@ -76,14 +75,18 @@ form
 
     .radio,
     .checkbox
+        font-size: 1.2em
         overflow: hidden
         position: relative
         input
             left: -999em
             position: absolute
         label
+            color: #5a5e57
+            font-size: 1em
+            font-weight: $regular
             margin: 0
-            padding: 0 0 0 2em
+            padding: .1em 0 .1em 2em
             position: relative
             &:before
                 color: #402E48

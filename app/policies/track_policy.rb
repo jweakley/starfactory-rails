@@ -2,6 +2,8 @@ class TrackPolicy < Struct.new(:user, :track)
   class Scope < Struct.new(:user, :scope)
     def resolve
       case
+      when !user
+        none
       when user.admin?
         scope
       else
@@ -28,19 +30,19 @@ class TrackPolicy < Struct.new(:user, :track)
   end
 
   def create?
-    user.admin?
+    !!user && user.admin?
   end
 
   def new?
-    user.admin?
+    !!user && user.admin?
   end
 
   def update?
-    user.admin?
+    !!user && user.admin?
   end
 
   def edit?
-    user.admin?
+    !!user && user.admin?
   end
 
   def destroy?

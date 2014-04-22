@@ -1,13 +1,13 @@
 class TracksController < ApplicationController
   respond_to :html
 
-  before_action :set_track, only: [:show, :edit, :update, :destroy]
+  before_action :load_and_auth_track, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb 'Tracks', :tracks_url
 
   # GET /tracks
   def index
-    @tracks = Track.active
+    @tracks = Track.page params[:page]
     authorize @tracks
     respond_with @tracks
   end
@@ -15,15 +15,14 @@ class TracksController < ApplicationController
   # GET /tracks/1
   def show
     add_breadcrumb @track.name
-    authorize @track
     respond_with @track
   end
 
   # GET /tracks/new
   def new
-    add_breadcrumb 'New'
     @track = policy_scope(Track).new
     authorize @track
+    add_breadcrumb 'New'
     respond_with @track
   end
 
@@ -31,7 +30,6 @@ class TracksController < ApplicationController
   def edit
     add_breadcrumb @track.name, track_url(@track)
     add_breadcrumb 'Edit'
-    authorize @track
     respond_with @track
   end
 
@@ -45,21 +43,20 @@ class TracksController < ApplicationController
 
   # PATCH/PUT /tracks/1
   def update
-    authorize @track
     @track.update(track_params)
     respond_with @track, location: @track, error: 'Unable to add track.'
   end
 
   # DELETE /tracks/1
   def destroy
-    authorize @track
     @track.destroy
     respond_with @track, location: @track, error: 'Unable to remove track.'
   end
 
 private
-  def set_track
+  def load_and_auth_track
     @track = Track.find(params[:id])
+    authorize @track
   end
 
   def track_params

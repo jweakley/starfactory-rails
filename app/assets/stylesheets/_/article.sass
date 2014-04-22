@@ -8,15 +8,19 @@ article
         line-height: 1.4em
         padding: 50px
         position: relative
-        &:after
-            +clear_fix()
-        aside
-            padding: 50px 0
-            ~ aside
-                padding-top: 0
+        .columns
+            &:after
+                +clear_fix()
+            aside
+                padding: 50px 0
+                ~ aside
+                    padding-top: 0
     a
         color: #e2655b
         font-weight: $heavy
+        &:hover,
+        &:focus
+            text-decoration: underline
     h1,
     h2,
     h3
@@ -25,11 +29,20 @@ article
         color: #9973aa
         font-size: 3.6em
         font-weight: $light
+        a
+            color: #9973aa
+            font-weight: $light
     h2
         color: #5cb1be
         font-size: 2.4em
+        a
+            color: #5cb1be
+            font-weight: $regular
     h3
         font-size: 1.8em
+        a
+            color: #5a5e57
+            font-weight: $regular
     li
         padding: 0 0 0 3em
         position: relative
@@ -55,12 +68,32 @@ article
         ~h1, ~h2, ~h3, ~p, ~blockquote, ~dl, ~ul, ~ol
             margin-top: 1em
 
+    section.tracks
+        text-align: left
+
+#flash
+    display: block
+    font-size: $heavy
+    margin: 30px auto 1em
+    max-width: 1040px
+    padding: .5em 30px
+    &.notice
+        background: #EB9B6F
+        color: #000
+    &.error
+        background: #E2655B
+        color: #fff
+
 body.tooSmall article,
 body.touchEnabled article
     top: 60px
 
+@media screen and (max-width: 1130px)
+    #flash
+        margin: 30px 15px 1em
+
 @media screen and (min-width: 680px)
-    article section aside
+    article section .columns aside
         text-align: left
         width: 45%
         &:nth-child(odd)

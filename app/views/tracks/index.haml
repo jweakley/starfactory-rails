@@ -1,9 +1,22 @@
 %section
   .wrapper
     %h1 Tracks
-    - if @tracks.any?
-      %ul
+    %table
+      %thead
+        %tr
+          %th Name
+          %th Workshops
+          %th Status
+          %th
+      - if @tracks.total_pages > 1
+        %tfoot
+          %th{ colspan: 4 }= paginate @tracks
+      %tbody
         - @tracks.each do |track|
-          %li= link_to track.name, track
-    - else
-      %p Oh no! There don't appear to be any active tracks available.
+          %tr
+            %td= link_to track.name, track
+            %td= track.workshops.count
+            %td= track.status
+            %td.actions
+              %div
+                = link_to track.name, edit_track_url(track), class: 'edit'

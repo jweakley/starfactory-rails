@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 if Rails.env.development?
   Rails.cache.clear
-  %w(users).each do |part|
+  %w(users tracks).each do |part|
     require File.join(
       File.expand_path(File.dirname(__FILE__)),
       "/seeds/#{part}.rb"

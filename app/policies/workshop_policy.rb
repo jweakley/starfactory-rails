@@ -2,6 +2,8 @@ class WorkshopPolicy < Struct.new(:user, :workshop)
   class Scope < Struct.new(:user, :scope)
     def resolve
       case
+      when !user
+        none
       when user.admin?
         scope
       else
@@ -29,19 +31,19 @@ class WorkshopPolicy < Struct.new(:user, :workshop)
   end
 
   def create?
-    user.admin?
+    !!user && user.admin?
   end
 
   def new?
-    user.admin?
+    !!user && user.admin?
   end
 
   def update?
-    user.admin?
+    !!user && user.admin?
   end
 
   def edit?
-    user.admin?
+    !!user && user.admin?
   end
 
   def destroy?

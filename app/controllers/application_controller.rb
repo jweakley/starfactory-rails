@@ -12,8 +12,9 @@ class ApplicationController < ActionController::Base
 private
   def user_not_authorized(exception)
     policy_name = exception.policy.class.to_s.underscore
-    flash[:error] = I18n.t "pundit.#{policy_name}.#{exception.query}",
-      default: 'You cannot perform this action.'
-    redirect_to(request.referrer || root_path)
+    error = I18n.t "pundit.#{policy_name}.#{exception.query}", default: ''
+    flash[:error] = error unless error.blank?
+    add_breadcrumb 'Status 403'
+    render 'static/status403'
   end
 end

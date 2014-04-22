@@ -26,11 +26,6 @@ jQuery(document).ready ($) ->
     $(window).scroll toggleFixeHeader
     toggleFixeHeader()
 
-    # Fade in content
-    $fadeInElems = $('article, footer')
-    $fadeInElems.hide()
-    setTimeout (-> $fadeInElems.fadeTo 500, 1), 500
-
     unless $.touchEnabled
 
         adjustFold = ->

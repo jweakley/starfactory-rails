@@ -37,6 +37,14 @@ FactoryGirl.define do
       build(:admin_profile, user: user, name: evaluator.name)
     end
   end
+  factory :admin_instructor_user, parent: :user do
+    after(:build) do |user, evaluator|
+      build(:instructor_profile, user: user, name: evaluator.name)
+    end
+    after(:build) do |user, evaluator|
+      build(:instructor_profile, user: user, name: evaluator.name)
+    end
+  end
   factory :instructor_user, parent: :user do
     after(:build) do |user, evaluator|
       build(:instructor_profile, user: user, name: evaluator.name)

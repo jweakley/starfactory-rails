@@ -1,1 +1,89 @@
 table
+    border-bottom: 3px solid #DDE0DA
+    margin: 2em 0
+    width: 100%
+
+    td,
+    th
+        text-align: left
+        &.alignr
+            text-align: right
+        &.alignc
+            text-align: center
+
+    thead th
+        background: #F5D184
+        color: #402E48
+        font-size: 1.2em
+        padding: .8em
+
+    tfoot
+        td,
+        th
+            background: #DDE0DA
+            border-top: 2px solid #ced2cb
+            padding: 1em
+        .pagination
+            color: #999e94
+            font-size: .8em
+            a,
+            span
+                display: inline-block
+                padding: 0 .15em
+            a
+                color: #757b70
+                &:hover,
+                &:focus
+                    color: #e2655b
+
+    tbody
+        td,
+        th
+            background: #fff
+            border-bottom: 1px solid #DDE0DA
+            padding: 1em
+
+    td.actions
+        padding: 0
+        text-align: right
+        width: 1px
+        >div
+            display: block
+            height: 3em
+            position: relative
+            vertical-align: top
+            white-space: nowrap
+        a
+            background: #9973AA
+            +border_radius(1em)
+            color: #fff
+            display: inline-block
+            height: 2em
+            line-height: 2em
+            margin: .5em
+            overflow: hidden
+            position: relative
+            text-align: left
+            text-decoration: none
+            text-indent: -999em
+            +transition(background .2s linear, color .2s linear)
+            width: 2em
+            &:before
+                left: 0
+                line-height: 2em
+                position: absolute
+                right: 0
+                text-align: center
+                text-indent: 0
+                top: 0
+            &.delete:before
+                content: '\f00d'
+            &.edit:before
+                content: '\f040'
+            &:hover,
+            &:focus
+                background: #402E48
+                color: #fff
+        a ~ a
+            margin-left: 0
+

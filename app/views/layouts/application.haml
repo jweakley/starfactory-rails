@@ -16,8 +16,8 @@
         = link_to root_url, class: 'brand' do
           = image_tag 'starfactory-logo@636x132.png', alt: 'Starfactory'
         %nav
-          = link_to 'Classes', '#'
-          = link_to 'Students', '#'
+          = link_to 'Classes', root_url(anchor: 'tracks')
+          = link_to 'Students', login_url
           = link_to 'Contact', '#'
 
     %article
@@ -31,7 +31,7 @@
       = yield
       %footer
         .wrapper
-          .classes= link_to 'Find a Class', '#'
+          .classes= link_to 'Find a Class', root_url(anchor: 'tracks')
           .legal Copyright &copy; #{Time.now.year} Starfactory.co
 
     = javascript_include_tag 'application'
