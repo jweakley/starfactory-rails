@@ -68,8 +68,68 @@ article
         ~h1, ~h2, ~h3, ~p, ~blockquote, ~dl, ~ul, ~ol
             margin-top: 1em
 
+    section.headline
+        background: image-url('home-landing-bg.jpg') 50% 50% no-repeat
+        +bg_size(cover)
+        h1
+            color: #fff
+            font-size: 4em
+            line-height: .75em
+            padding: .5em 0
+            text-align: center
+        h2
+            color: #fff
+            font-size: 3em
+            font-weight: $light
+            padding: 1em 0 0
+            text-align: center
+        cite
+            color: #fff
+            display: block
+            font-size: 1.2em
+            font-weight: $heavy
+            padding: .5em 0 2.4em
+            text-align: center
+            &:before
+                content: '\2014'
+                font-family: $primary
+        p
+            color: #fff
+            display: block
+            font-size: 1.2em
+            padding: 1em 0
+            text-align: center
+
     section.tracks
         text-align: left
+
+    section.track
+        text-align: left
+
+    section.workshop
+        text-align: left
+        dl
+            margin: 1em 0
+            &:after
+                +clear_fix()
+            dt,
+            dd
+                +box_sizing(border-box)
+                margin: 0 0 2px
+            dt
+                background: #5CB1BE
+                border-right: 2px solid #E9ECE6
+                color: #fff
+                float: left
+                font-size: 1.2em
+                padding: .4em .8em
+                text-align: right
+                width: 30%
+            dd
+                background: #DDE0DA
+                float: right
+                padding: .5em 1em
+                width: 70%
 
 #flash
     display: block

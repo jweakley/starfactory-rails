@@ -7,6 +7,7 @@ class TracksController < ApplicationController
 
   # GET /tracks
   def index
+    @page_title = 'Tracks'
     if logged_in? && current_user.admin?
       @tracks = Track.page params[:page]
     else
@@ -18,6 +19,7 @@ class TracksController < ApplicationController
 
   # GET /tracks/1
   def show
+    @page_title = @track.name
     add_breadcrumb @track.name
     authorize @track
     respond_with @track

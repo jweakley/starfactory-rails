@@ -1,6 +1,5 @@
 %section
   .wrapper
-    %h1 Tracks
     %table
       %thead
         %tr
@@ -21,3 +20,5 @@
               %div
                 - if logged_in? && current_user.admin?
                   = link_to track.name, edit_track_url(track), class: 'edit'
+
+= render 'shared/about'

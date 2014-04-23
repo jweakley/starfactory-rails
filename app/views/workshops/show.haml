@@ -1,7 +1,7 @@
-%section
+%section.workshop
   .wrapper
-    %h1= @workshop.name
-
+    = text_to_html @workshop.description
+    %hr
     %dl
       - if @workshop.tracks.any?
         %dt Track
@@ -11,5 +11,5 @@
         %dt Instructor
         - @workshop.instructor_profiles.each do |instructor_profile|
           %dd= link_to instructor_profile.name, instructor_profile
-    %hr
-    = text_to_html @workshop.description
+
+= render 'shared/about'

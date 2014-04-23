@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   respond_to :html
 
   def new
+    @page_title = 'Register'
     @user = User.new
     add_breadcrumb 'Register'
   end

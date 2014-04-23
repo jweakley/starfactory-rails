@@ -1,6 +1,5 @@
 %section
   .wrapper
-    %h1 Workshops
     %table
       %thead
         %tr
@@ -33,3 +32,5 @@
               %div
                 - if logged_in? && current_user.admin?
                   = link_to workshop.name, edit_workshop_url(workshop), class: 'edit'
+
+= render 'shared/about'

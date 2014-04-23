@@ -24,6 +24,9 @@
             = link_to 'Logout', logout_url
 
     %article
+      - if defined?(@page_title)
+        %section.headline
+          %h1= @page_title
       - unless current_page? root_url
         %nav.breadcrumbs
           .wrapper= render_breadcrumbs separator: ' / '
@@ -31,7 +34,9 @@
         %mark#flash.error= error
       - elsif !!notice
         %mark#flash.notice= notice
+
       = yield
+
       %footer
         .wrapper
           .classes= link_to 'Find a Class', root_url(anchor: 'tracks')

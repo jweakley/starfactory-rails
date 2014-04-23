@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   respond_to :html
 
   def new
+    @page_title = 'Login'
     if logged_in?
       flash[:notice] = "You're already logged in."
       redirect_to root_url, status: 302

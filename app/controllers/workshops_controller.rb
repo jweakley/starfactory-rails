@@ -7,6 +7,7 @@ class WorkshopsController < ApplicationController
 
   # GET /workshops
   def index
+    @page_title = 'Workshops'
     if logged_in? && current_user.admin?
       @workshops = Workshop.page params[:page]
     else
@@ -18,6 +19,7 @@ class WorkshopsController < ApplicationController
 
   # GET /workshops/1
   def show
+    @page_title = @workshop.name
     add_breadcrumb @workshop.name
     authorize @workshop
     respond_with @workshop
