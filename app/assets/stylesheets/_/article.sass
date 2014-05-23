@@ -1,165 +1,45 @@
 article
-    left: 0
-    position: absolute
-    right: 0
-    top: 200px
-    section
-        +box_sizing(border-box)
-        line-height: 1.4em
-        padding: 50px
-        position: relative
-        .columns
-            &:after
-                +clear_fix()
-            aside
-                padding: 50px 0
-                ~ aside
-                    padding-top: 0
+    font-size: 0
+    &:after
+        +clear_fix()
+
+    section,
+    aside
+        font-size: $baseFontSize
+
     a
-        color: #e2655b
-        font-weight: $heavy
+        color: #43a594
+        text-decoration: underline
         &:hover,
         &:focus
-            text-decoration: underline
+            color: #3dc6ae
+
+article .textual
+
     h1,
     h2,
     h3
-        line-height: 1em
-    h1
-        color: #9973aa
-        font-size: 3.6em
+        color: #3dc6ae
         font-weight: $light
-        a
-            color: #9973aa
-            font-weight: $light
+    h1
+        font-size: 3em
     h2
-        color: #5cb1be
-        font-size: 2.4em
-        a
-            color: #5cb1be
-            font-weight: $regular
+        font-size: 2em
     h3
-        font-size: 1.8em
-        a
-            color: #5a5e57
-            font-weight: $regular
-    li
-        padding: 0 0 0 3em
-        position: relative
-        &:before
-            color: #bdc2b8
-            font-size: .8em
-            left: 0
-            position: absolute
-            text-align: right
-            width: 3em
-    ul,
-    ol
-        text-align: left
-    ul > li:before
-        content: '\f006'
-    ol > li
-        counter-increment: index
-    ol > li:before
-        content: counter(index) '.'
-        font-weight: $heavy
+        font-size: 1.5em
 
-    h1, h2, h3, p, blockquote, dl, ul, ol
-        ~h1, ~h2, ~h3, ~p, ~blockquote, ~dl, ~ul, ~ol
-            margin-top: 1em
+    p
+        line-height: 1.4em
 
-    section.headline
-        background: image-url('home-landing-bg.jpg') 50% 50% no-repeat
-        +bg_size(cover)
-        h1
-            color: #fff
-            font-size: 4em
-            line-height: .75em
-            padding: .5em 0
-            text-align: center
-        h2
-            color: #fff
-            font-size: 3em
-            font-weight: $light
-            padding: 1em 0 0
-            text-align: center
-        cite
-            color: #fff
-            display: block
-            font-size: 1.2em
-            font-weight: $heavy
-            padding: .5em 0 2.4em
-            text-align: center
-            &:before
-                content: '\2014'
-                font-family: $primary
-        p
-            color: #fff
-            display: block
-            font-size: 1.2em
-            padding: 1em 0
-            text-align: center
+    h1, h2, h3, p, ul, ol, dl, blockquote, form, table
+        ~h1, ~h2, ~h3, ~p, ~ul, ~ol, ~dl, ~blockquote, ~form, ~table
+            margin-top: 1.5em
 
-    section.tracks
-        text-align: left
-
-    section.track
-        text-align: left
-
-    section.workshop
-        text-align: left
-        dl
-            margin: 1em 0
-            &:after
-                +clear_fix()
-            dt,
-            dd
-                +box_sizing(border-box)
-                margin: 0 0 2px
-            dt
-                background: #5CB1BE
-                border-right: 2px solid #E9ECE6
-                color: #fff
-                float: left
-                font-size: 1.2em
-                padding: .4em .8em
-                text-align: right
-                width: 30%
-            dd
-                background: #DDE0DA
-                float: right
-                padding: .5em 1em
-                width: 70%
-
-#flash
-    display: block
-    font-size: $heavy
-    margin: 30px auto 1em
-    max-width: 1040px
-    padding: .5em 30px
-    &.notice
-        background: #EB9B6F
-        color: #000
-    &.error
-        background: #E2655B
-        color: #fff
-
-body.tooSmall article,
-body.touchEnabled article
-    top: 60px
-
-@media screen and (max-width: 1130px)
-    #flash
-        margin: 30px 15px 1em
-
-@media screen and (min-width: 680px)
-    article section .columns aside
-        text-align: left
-        width: 45%
-        &:nth-child(odd)
-            clear: both
-            float: left
-        &:nth-child(even)
-            float: right
-        ~ aside
-            padding-top: 50px
+section.callout
+    background: $colorAccent2Darker
+    +border_radius(3px)
+    color: $colorTextBold
+    padding: 25px
+    h1
+        font-size: 2em
+        font-weight: $light

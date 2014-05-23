@@ -10,6 +10,7 @@ Starfactory::Application.routes.draw do
   resources :student_profiles, path: 'students'
   resources :tracks
   resources :workshops
+  resources :events
 
   get '403' => 'static#status403', as: 'status_403'
   get '404' => 'static#status404', as: 'status_404'

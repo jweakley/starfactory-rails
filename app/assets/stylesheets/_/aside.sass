@@ -1,0 +1,37 @@
+article aside
+    display: inline-block
+    margin: 70px 0 70px 70px
+    text-align: left
+    vertical-align: top
+    width: 290px
+
+    form
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="website"],
+        textarea
+            width: 100%
+
+    form.signup
+        position: relative
+        input
+            +border_radius(3px,0,0,3px)
+            width: 243px
+        button
+            +box_shadow(0 0 15px rgba(#000,.1))
+            line-height: 50px
+            overflow: hidden
+            padding: 0 3px
+            position: absolute
+            right: 0
+            top: 0
+            +transition(padding .2s linear, box-shadow .2s linear)
+            width: 44px
+            img
+                display: inline-block
+                vertical-align: middle
+            &:hover,
+            &:after
+                +box_shadow(0 0 35px rgba(#000,.3))
+                padding: 0 0 0 6px

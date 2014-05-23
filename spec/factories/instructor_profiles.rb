@@ -18,5 +18,6 @@ FactoryGirl.define do
     user
     name 'Some Instructor'
     bio ''
+    events []
   end
 end

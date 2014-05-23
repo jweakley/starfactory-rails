@@ -1,6 +1,7 @@
 class StaticController < ApplicationController
   def index
-    @tracks = Track.active
+    @active_events = Event.active.page.per 3
+    @voted_workshops = Workshop.active.page.per 3
   end
 
   def status403

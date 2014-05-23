@@ -2,106 +2,32 @@
 button,
 input[type="button"],
 input[type="submit"]
-    background: #9973AA
-    color: #fff
-    display: inline-block
-    font-weight: $heavy
-    line-height: 2em
-    padding: 0 2em
-    text-decoration: none !important
-    vertical-align: middle
-    white-space: nowrap
+    background: #414348
+    +border_radius(3px)
+    color: #D14C78
+    line-height: 50px
+    padding: 0 25px
+    text-align: center
+    text-decoration: none
     &:hover,
     &:focus
-        background: #402E48
-    + .btn,
-    + button,
-    + input[type="button"],
-    + input[type="submit"]
-        margin-left: .5em
+        color: #F9598D
 
 form
-    border-top: 2px solid #DDE0DA
-    margin: 1em auto
-    max-width: 600px
-    text-align: left
-
-    .field
-        margin-top: 2em
-
-    label
-        color: #5CB1BE
-        display: inline-block
-        font-size: 1.8em
-        font-weight: $light
-        margin: 0 0 .5em
-
-    fieldset
-        margin-top: 2em
-        padding: .5em 0 0
-        .field
-            margin-top: 0
-        legend
-            color: #5CB1BE
-            display: block
-            font-size: 1.8em
-            font-weight: $light
-        label
-            color: #5a5e57
-            font-size: 1em
-            font-weight: $regular
-            margin: 0 0 0 .5em
 
     input[type="text"],
     input[type="password"],
     input[type="email"],
     input[type="website"],
     textarea
-        background: #fff
+        background: #3B3D42
+        +border_radius(3px)
         +box_sizing(border-box)
-        display: block
-        padding: .5em
-        line-height: 1em
-        max-width: 100%
-        width: 100%
+        color: $colorText
+        line-height: 30px
+        padding: 10px 15px
+        &:focus
+            color: $colorTextBold
+
     textarea
-        line-height: 1.4em
-        min-height: 5.6em
-
-    select
-        background: #fff
-        display: inline-block
-        padding: .5em
-
-    .radio,
-    .checkbox
-        font-size: 1.2em
-        overflow: hidden
-        position: relative
-        input
-            left: -999em
-            position: absolute
-        label
-            color: #5a5e57
-            font-size: 1em
-            font-weight: $regular
-            margin: 0
-            padding: .1em 0 .1em 2em
-            position: relative
-            &:before
-                color: #402E48
-                content: '\f10c'
-                left: 0
-                position: absolute
-                text-align: center
-                top: 0
-                width: 2em
-    .radio input:checked ~ label:before
-        content: '\f192'
-    .checkbox input:checked ~ label:before
-        content: '\f05d'
-
-    .actions
-        border-top: 2px solid #DDE0DA
-        margin-top: 2em
-        padding: 1em 0
+        min-height: 90px

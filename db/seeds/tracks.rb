@@ -1,10 +1,7 @@
-@instructor_profile = InstructorProfile.first
-
 def add_workshop(track, name)
   FactoryGirl.create(:workshop,
     name: name,
-    tracks: [track],
-    instructor_profiles: [@instructor_profile]
+    tracks: [track]
   )
 end
 

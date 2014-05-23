@@ -1,15 +1,15 @@
 # == Schema Information
 #
-# Table name: instructor_profiles_workshops
+# Table name: instructor_profile_events
 #
 #  id                    :integer          not null, primary key
 #  instructor_profile_id :integer
-#  workshop_id           :integer
+#  event_id              :integer
 #  created_at            :datetime
 #  updated_at            :datetime
 #
 
-class InstructorProfilesWorkshop < ActiveRecord::Base
+class InstructorProfilesEvent < ActiveRecord::Base
   belongs_to :instructor_profile
-  belongs_to :workshop
+  belongs_to :event
 end
