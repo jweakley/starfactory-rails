@@ -13,6 +13,8 @@
 #
 
 class Workshop < ActiveRecord::Base
+  include Votable
+
   has_many :tracks_workshops
   has_many :tracks, through: :tracks_workshops
   has_many :events
@@ -20,5 +22,5 @@ class Workshop < ActiveRecord::Base
   VALID_STATUSES = %w(Active Disabled)
 
   scope :active, -> { where { status.eq 'Active' } }
-  scope :voted# TODO: Add scope to get workshops with the most votes
+  scope :voted, -> { order(votes_count: :desc) }
 end

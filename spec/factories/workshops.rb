@@ -21,5 +21,6 @@ FactoryGirl.define do
     status 'Active'
     tracks []
     events []
+    votes_goal 10
   end
 end
