@@ -1,0 +1,1 @@
+= image_tag "#{src}.svg", onerror: "this.src='#{image_url src + '.png'}';this.onerror=null;", alt: (local_assigns.has_key?(:alt) ? alt : '')

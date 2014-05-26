@@ -1,65 +1,30 @@
-- content_for :header do
-  = stylesheet_link_tag 'home'
+.wrapper
+  %section.callout
+    %h1 Learn how to build websites and apps with real people.
 
-%section.landing
-  %h1 Learn how to web
-  %h2 Hands-on instruction from the pros
-  .classes= link_to 'Classes', root_url(anchor: 'tracks')
+  %section.workshops
+    .list.upcoming
+      %label Upcoming
+      %ol
+        - @active_events.each do |event|
+          = render 'events/list_item', event: event
+    .list.voted
+      %label On the horizon
+      %ol
+        - @voted_workshops.each do |workshop|
+          = render 'workshops/list_item', workshop: workshop
 
-%section.info
-  .wrapper
-    .columns
-      %aside
-        %h1 Fun
-        %p
-          Being a jack of all trades almost feels like a requirement when it comes
-          to building a website. If learning is a requirement, then
-        %p
-          %strong
-            Learning
-            %em should
-            be fun.
-      %aside
-        %h1 Easy
-        %p
-          With so many free resources out there, you’d think learning new stuff
-          would be easy. Unfortunately, that’s not always the case.
-        %p
-          %strong
-            Learning
-            %em should
-            be easy.
-
-%section.quote.bike
-  .wrapper
-    .quote
-      %q Somewhere, something incredible is waiting to be known.
-      %cite —Carl Sagan
-
-%section.tracks#tracks
-  .wrapper
-    %h1 Level up
+  %aside.textual
+    %h2 Our workshops are small, intimate, and in person
     %p
-      We believe the best way to level up is by experience, so we structured
-      classes to be more like workshops. Dive right in and get help as you go.
-      A maxium class size of 10 means no getting ignored&mdash;no drowning.
-      Attend any of the available tracks, or pick and choose what you need to
-      brush up on.
-    .columns
-      - @tracks.each do |track|
-        %aside
-          %h2= link_to track.name, track
-          - if track.workshops.any?
-            %ul
-              - track.workshops.each do |workshop|
-                %li= link_to workshop.name, workshop
-          - else
-            %p This track does not have any classes yet.
-
-%section.quote.cave
-  .wrapper
-    .quote
-      %q You have infinite potential...If you change the world, the world will change.
-      %cite —Neil Gaiman
-      / %q Don't let anyone rob you of your imagination, your creativity, or your curiosity.
-      / %cite —Mae C. Jemison
+      It’s awesome to see the sheer number of resources out there for learning
+      on your own. Unfortunately, many are missing a vital piece: the human
+      element. We can learn faster and better when we learn from each other.
+    %p
+      Starfactory is based out of Tri-Cities, WA. Our tech community is growing
+      like wildfire here, and Starfactory another fan to the flame.
+    %h2 Sound pretty rad?
+    %p Join our non-spammy email list:
+    %form.signup
+      %input{ type: 'text' }
+      %button= svg_image 'arrow-right', alt: 'Submit'

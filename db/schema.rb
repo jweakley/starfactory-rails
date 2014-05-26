@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422215446) do
+ActiveRecord::Schema.define(version: 20140524012747) do
 
   create_table "admin_profiles", force: true do |t|
     t.string   "name"
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(version: 20140422215446) do
     t.datetime "updated_at"
   end
 
+  create_table "events", force: true do |t|
+    t.string   "status",      default: "Active"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.integer  "workshop_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "events", ["workshop_id"], name: "index_events_on_workshop_id"
+
   create_table "instructor_profiles", force: true do |t|
     t.string   "name"
     t.text     "bio"
@@ -41,14 +52,14 @@ ActiveRecord::Schema.define(version: 20140422215446) do
 
   add_index "instructor_profiles", ["user_id"], name: "index_instructor_profiles_on_user_id"
 
-  create_table "instructor_profiles_workshops", force: true do |t|
+  create_table "instructor_profiles_events", force: true do |t|
     t.integer  "instructor_profile_id"
-    t.integer  "workshop_id"
+    t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "instructor_profiles_workshops", ["instructor_profile_id", "workshop_id"], name: "rel_instructor_profiles_workshops", unique: true
+  add_index "instructor_profiles_events", ["instructor_profile_id", "event_id"], name: "rel_instructor_profiles_events", unique: true
 
   create_table "student_profiles", force: true do |t|
     t.string   "name"
@@ -63,10 +74,10 @@ ActiveRecord::Schema.define(version: 20140422215446) do
 
   create_table "tracks", force: true do |t|
     t.string   "name"
-    t.string   "status"
+    t.text     "description"
+    t.string   "status",      default: "Active"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "description"
   end
 
   create_table "tracks_workshops", force: true do |t|
@@ -101,14 +112,25 @@ ActiveRecord::Schema.define(version: 20140422215446) do
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token"
 
+  create_table "votes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "workshop_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["user_id", "workshop_id"], name: "index_votes_on_user_id_and_workshop_id", unique: true
+
   create_table "workshops", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "status"
+    t.string   "status",      default: "Active"
     t.string   "banner"
     t.string   "icon"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "votes_count", default: 0
+    t.integer  "votes_goal",  default: 0
   end
 
 end

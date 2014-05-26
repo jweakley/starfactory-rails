@@ -3,7 +3,7 @@ class CreateWorkshops < ActiveRecord::Migration
     create_table :workshops do |t|
       t.string :name
       t.text :description
-      t.string :status
+      t.string :status, default: 'Active'
       t.string :banner
       t.string :icon
 

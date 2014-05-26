@@ -1,72 +1,15 @@
 footer
-    background: image-url('footer-bg.jpg') 100% 0 no-repeat
-    overflow: hidden
-    padding: 50px
-    position: relative
-    .wrapper
-        height: 300px
-
-    .classes
-        background: image-url('bullet-plum.png') 50% 50% no-repeat
-        height: 0
-        top: 25px
-        padding: 99px 0 0
-        position: relative
-        a
-            border: 2px solid #e2655b
-            +box_sizing(border-box)
-            color: #e2655b
-            display: block
-            line-height: 2.5em
-            margin: 0 auto -2.5em
-            text-decoration: none
-            +transition(background .2s linear)
-            width: 10em
-            &:before
-                background: image-url('triangle-plum-up.png') 50% 50% no-repeat
-                bottom: 100%
-                content: ''
-                height: 27px
-                left: 0
-                position: absolute
-                right: 0
-            &:hover,
-            &:focus
-                background: #e2655b
-                color: #fff
-        &:before,
-        &:after
-            background: image-url('bullet-plum.png') 50% 50% no-repeat
-            content: ''
-            left: 0
-            position: absolute
-            right: 0
-        &:before
-            bottom: 50%
-            top: 0
-        &:after
-            top: 50%
-            bottom: 0
-
-    .legal
-        bottom: -25px
-        color: #959389
-        font-size: .75em
-        left: 0
-        position: absolute
-        right: 0
-        text-align: center
-        a
-            color: #959389
-        a:hover,
-        a:focus
-            color: #E5616B
-
-@media screen and (max-width: 1599px)
-    footer
-        background-position: 30% 100%
-
-@media screen and (max-width: 759px)
-    footer .legal
-        font-size: .9em
-        text-align: center
+    font-size: .8em
+    color: #5a5c64
+    a
+        background: #3B3D42
+        +border_radius(1em)
+        color: $colorText
+        display: inline-block
+        line-height: 1.5em
+        margin: 0 .25em
+        padding: 0 .5em
+        &:hover,
+        &:focus
+            background: $colorTextBold
+            color: $colorAccent

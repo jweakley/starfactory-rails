@@ -1,21 +1,22 @@
-*:before,
-*:after
-    font-family: FontAwesome
-    font-weight: normal
-    -webkit-font-smoothing: antialiased
-
-+selection(#5CB1BE, #fff)
++selection($colorAccent2, #fff)
 
 body
-    background: #E9ECE6
-    color: #5a5e57
-    font: 20px $primary
+    background: #2e3035
+    color: $colorText
+    font: $baseFontSize $primary
     font-weight: $regular
 
 .wrapper
     margin: 0 auto
-    max-width: 1100px
+    max-width: 1200px
     position: relative
+
+#body
+    left: 0
+    padding: 35px
+    position: absolute
+    right: 0
+    top: 70px
 
 strong,
 strong *
@@ -26,6 +27,19 @@ em *
     font-style: italic
 
 hr
-    border-top: 1px solid #cbcfc8
+    border-top: 1px solid #c9ccd6
     height: 0
     margin: 2em 0
+
+#flash
+    +border_radius(3px)
+    color: $colorTextBold
+    display: block
+    font-size: $baseFontSize * 1.25
+    font-weight: $light
+    margin: 0 0 2em
+    padding: 1em
+    &.notice
+        background: $colorAccent2Darker
+    &.error
+        background: $colorAccentDarker

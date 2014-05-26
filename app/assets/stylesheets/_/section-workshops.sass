@@ -1,0 +1,63 @@
+article section.workshops
+    display: inline-block
+    text-align: left
+    vertical-align: top
+    width: 840px
+
+    .list
+        margin: 35px 0
+        label
+            color: #fb5d8d
+            cursor: default
+            display: block
+            font-size: 1.2em
+            font-weight: $light
+            line-height: 35px
+
+        li
+            background: #3B3D42
+            border-left: 5px solid
+            +border_radius(3px)
+            min-height: 3em
+            padding: 30px 35px 30px 215px
+            position: relative
+            +transition(border .2s linear)
+
+            time
+                color: #90939b
+                left: 35px
+                position: absolute
+                top: 30px
+                width: 170px
+                .monthday,
+                .soon
+                    font-size: 1.6em
+                    font-weight: $light
+                .weektime,
+                .votes
+                    font-weight: $heavy
+
+            .about
+                h3 a
+                    color: $colorTextBold
+                    font-size: 1.6em
+                    font-weight: $light
+                    text-decoration: none
+                dfn
+                    color: #90939b
+                    display: block
+
+        li:hover,
+        li.active
+            border-left-width: 10px
+
+        li ~ li
+            border-top: 1px solid #2E3035
+
+        &.upcoming li
+            border-left-color: $colorAccentDarker
+            &:hover,
+            &:active
+                border-left-color: $colorAccent
+        &.voted li
+            border-left-color: #595C62

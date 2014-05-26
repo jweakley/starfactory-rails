@@ -1,10 +1,9 @@
 !!!
 %html
   %head
-    %title Starfactory
+    %title #{defined?(@page_title) ? "#{@page_title} / " : ''} Starfactory
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=0.5' }
-    = stylesheet_link_tag '//fonts.googleapis.com/css?family=Raleway:100,300,600'
-    = stylesheet_link_tag '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'
+    = stylesheet_link_tag '//fonts.googleapis.com/css?family=Raleway:100,300,700'
     = stylesheet_link_tag 'application', media: :all
     = yield :header
     = favicon_link_tag asset_path('favicon.png')
@@ -14,7 +13,7 @@
     %header
       .wrapper
         = link_to root_url, class: 'brand' do
-          = image_tag 'starfactory-logo@636x132.png', alt: 'Starfactory'
+          = svg_image 'starfactory-logo', alt: 'Starfactory'
         %nav
           = link_to 'Classes', root_url(anchor: 'tracks')
           - unless logged_in?
@@ -23,24 +22,20 @@
           - if logged_in?
             = link_to 'Logout', logout_url
 
-    %article
-      - if defined?(@page_title)
-        %section.headline
-          %h1= @page_title
-      - unless current_page? root_url
-        %nav.breadcrumbs
-          .wrapper= render_breadcrumbs separator: ' / '
-      - if !!error
-        %mark#flash.error= error
-      - elsif !!notice
-        %mark#flash.notice= notice
+    #body
+      %article
+        - if !!error
+          %mark#flash.error= error
+        - elsif !!notice
+          %mark#flash.notice= notice
 
-      = yield
+        = yield
 
       %footer
         .wrapper
-          .classes= link_to 'Find a Class', root_url(anchor: 'tracks')
-          .legal Copyright &copy; #{Time.now.year} Starfactory.co
+          .legal
+            Copyright &copy; #{Time.now.year}
+            = link_to 'dw2', 'http://dougwaltman.com'
 
     = javascript_include_tag 'application'
     = yield :footer

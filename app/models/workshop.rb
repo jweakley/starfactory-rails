@@ -13,12 +13,14 @@
 #
 
 class Workshop < ActiveRecord::Base
+  include Votable
+
   has_many :tracks_workshops
   has_many :tracks, through: :tracks_workshops
-  has_many :instructor_profiles_workshops
-  has_many :instructor_profiles, through: :instructor_profiles_workshops
+  has_many :events
 
   VALID_STATUSES = %w(Active Disabled)
 
   scope :active, -> { where { status.eq 'Active' } }
+  scope :voted, -> { order(votes_count: :desc) }
 end
