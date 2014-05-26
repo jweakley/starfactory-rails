@@ -9,5 +9,12 @@
           %dd= link_to track.name, track
       %dt Votes
       %dd= @workshop.votes.count
+    - if current_user
+      - if !@vote
+        = link_to 'Vote', workshop_votes_url(@workshop.id), method: :post
+      - else
+        = link_to 'Unvote', workshop_vote_url(@workshop.id, @vote.id), method: :delete
+    - else
+      = link_to 'Vote', new_session_url
 
 = render 'shared/about'

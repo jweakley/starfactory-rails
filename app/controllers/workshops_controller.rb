@@ -2,6 +2,7 @@ class WorkshopsController < ApplicationController
   respond_to :html
 
   before_action :load_workshop, only: [:show, :edit, :update, :destroy]
+  before_action :load_current_user_vote, only: [:show]
 
   add_breadcrumb 'Workshops', :workshops_url
 
@@ -64,6 +65,14 @@ class WorkshopsController < ApplicationController
 private
   def load_workshop
     @workshop = Workshop.find(params[:id])
+  end
+
+  def load_current_user_vote
+    if current_user
+      @vote = @workshop.votes.find_by_user_id current_user.id
+    else
+      @vote = nil
+    end
   end
 
   def workshop_params

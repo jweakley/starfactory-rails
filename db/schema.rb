@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(version: 20140524012747) do
     t.datetime "updated_at"
   end
 
-  add_index "votes", ["user_id", "workshop_id"], name: "index_votes_on_user_id_and_workshop_id"
+  add_index "votes", ["user_id", "workshop_id"], name: "index_votes_on_user_id_and_workshop_id", unique: true
 
   create_table "workshops", force: true do |t|
     t.string   "name"
