@@ -2,32 +2,92 @@
 button,
 input[type="button"],
 input[type="submit"]
-    background: #414348
+    background: #D35079
     +border_radius(3px)
-    color: #D14C78
+    color: #fff
+    font-size: 1.2em
+    font-weight: $light
     line-height: 50px
     padding: 0 25px
     text-align: center
     text-decoration: none
+    text-transform: uppercase
     &:hover,
     &:focus
-        color: #F9598D
+        background: #F05D8C
+        color: #fff
+    &.secondary
+        background: #414348
+        color: #D14C78
+        &:hover,
+        &:focus
+            background: lighten(#414348, 5%)
+            color: #F9598D
 
-form
+article form
+    text-align: left
+
+    label
+        display: inline-block
+        margin: .5em 0
 
     input[type="text"],
     input[type="password"],
     input[type="email"],
-    input[type="website"],
+    input[type="number"],
+    input[type="url"],
     textarea
         background: #3B3D42
         +border_radius(3px)
         +box_sizing(border-box)
         color: $colorText
+        display: block
         line-height: 30px
+        min-width: 25em
         padding: 10px 15px
         &:focus
+            background: lighten(#3B3D42, 5%)
             color: $colorTextBold
 
     textarea
         min-height: 90px
+
+    .field.checkbox
+        margin: .5em 0
+        overflow: hidden
+        position: relative
+        input
+            position: absolute
+            right: 200%
+        label
+            position: relative
+            &:before
+                background: #3B3D42
+                +border_radius(3px)
+                color: #2E3035
+                content: '\f00c'
+                display: inline-block
+                font-size: 1.2em
+                height: 1.6em
+                margin: 0 .8em 0 0
+                line-height: 1.6em
+                text-align: center
+                text-indent: 0
+                vertical-align: middle
+                width: 1.6em
+        input:checked ~ label:before
+            color: #fff
+        &:hover label:before
+            background: lighten(#3B3D42, 5%)
+
+    .actions
+        margin: 1em 0 0
+
+body.sessions,
+body.users
+    article form
+        background: rgba(#000, .1)
+        +border_radius(3px)
+        margin: 2em auto
+        padding: 2em
+        width: 25em

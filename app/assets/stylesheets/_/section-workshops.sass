@@ -43,9 +43,20 @@ article section.workshops
                     font-size: 1.6em
                     font-weight: $light
                     text-decoration: none
+                    &:after
+                        bottom: 0
+                        content: ''
+                        left: 0
+                        position: absolute
+                        right: 0
+                        top: 0
+                        z-index: 1
                 dfn
                     color: #90939b
                     display: block
+                    a
+                        position: relative
+                        z-index: 2
 
         li:hover,
         li.active
