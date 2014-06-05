@@ -19,7 +19,6 @@ body
 
 #body
     left: 0
-    padding: 35px
     position: absolute
     right: 0
     top: 70px
@@ -49,3 +48,15 @@ hr
         background: $colorAccent2Darker
     &.error
         background: $colorAccentDarker
+
+@media screen and (min-width: 541px)
+    #body
+        padding: 35px
+
+@media screen and (max-width: 540px) and (min-width: 481px)
+    #body
+        padding: 25px
+
+@media screen and (max-width: 480px)
+    #body
+        padding: 15px

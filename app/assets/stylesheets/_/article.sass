@@ -1,5 +1,8 @@
 article
+    +box_sizing(border-box)
     font-size: 0
+    margin: 0 auto
+    max-width: 1200px
     &:after
         +clear_fix()
 
@@ -43,3 +46,19 @@ section.callout
     h1
         font-size: 2em
         font-weight: $light
+
+@media screen and (min-width: 1024px)
+    body.staticIndex
+        article
+            padding-right: 360px
+        section.callout
+            margin-right: -360px
+
+@media screen and (max-width: 1023px) and (min-width: 900px)
+    body.staticIndex
+        article
+            padding-right: 310px
+        section.callout
+            margin-right: -310px
+
+@media screen and (max-width: 899px)
