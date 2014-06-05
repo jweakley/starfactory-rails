@@ -16,12 +16,8 @@ gem 'pg', group: [:production]
 gem 'pundit'
 gem 'rspec-rails', group: [:development, :test]
 gem 'sass-rails', '~> 4.0.0'
+gem 'sdoc', require: false, group: [:doc]
 gem 'sorcery'
 gem 'sqlite3', group: [:development, :test]
 gem 'squeel'
 gem 'uglifier', '>= 1.3.0'
-
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
