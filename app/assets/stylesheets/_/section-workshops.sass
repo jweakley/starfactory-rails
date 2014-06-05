@@ -1,9 +1,4 @@
 article section.workshops
-    float: left
-    text-align: left
-    vertical-align: top
-    width: 100%
-
     .list
         margin: 35px 0
         label
@@ -19,15 +14,12 @@ article section.workshops
             border-left: 5px solid
             +border_radius(3px)
             min-height: 3em
-            padding: 30px 35px
             position: relative
             +transition(border .2s linear)
 
             time
                 color: #90939b
-                left: 35px
                 position: absolute
-                top: 30px
                 width: 170px
                 .monthday,
                 .soon
@@ -75,8 +67,14 @@ article section.workshops
 
 @media screen and (min-width: 600px)
     article section.workshops .list li
-        padding-left: 215px
+        padding: 30px 35px 30px 215px
+        time
+            left: 35px
+            top: 30px
 
 @media screen and (max-width: 599px)
     article section.workshops .list li
-        padding-left: 180px
+        padding: 20px 25px 20px 180px
+        time
+            left: 25px
+            top: 20px

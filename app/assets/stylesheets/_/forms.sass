@@ -21,7 +21,7 @@ input[type="submit"]
         color: #D14C78
         &:hover,
         &:focus
-            background: lighten(#414348, 5%)
+            background: lighten(#414348, 2%)
             color: #F9598D
 
 article form
@@ -43,10 +43,9 @@ article form
         color: $colorText
         display: block
         line-height: 30px
-        min-width: 25em
         padding: 10px 15px
         &:focus
-            background: lighten(#3B3D42, 5%)
+            background: lighten(#3B3D42, 2%)
             color: $colorTextBold
 
     textarea
@@ -90,4 +89,22 @@ body.users
         +border_radius(3px)
         margin: 2em auto
         padding: 2em
-        width: 25em
+        max-width: 25em
+
+@media screen and (min-width: 541px)
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    input[type="url"],
+    textarea
+        min-width: 25em
+
+@media screen and (max-width: 540px)
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    input[type="url"],
+    textarea
+        width: 100%

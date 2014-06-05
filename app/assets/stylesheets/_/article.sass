@@ -1,14 +1,9 @@
 article
     +box_sizing(border-box)
-    font-size: 0
     margin: 0 auto
     max-width: 1200px
     &:after
         +clear_fix()
-
-    section,
-    aside
-        font-size: $baseFontSize
 
     a
         color: #43a594
@@ -16,6 +11,9 @@ article
         &:hover,
         &:focus
             color: #3dc6ae
+
+    section
+        text-align: left
 
 article .textual
 
@@ -47,18 +45,33 @@ section.callout
         font-size: 2em
         font-weight: $light
 
+
+body.staticIndex,
+body.workshopsShow
+    article section
+        float: left
+        width: 100%
+    section.callout
+        float: none
+        width: auto
+
+body.sessions,
+body.users
+    section
+        text-align: center
+
 @media screen and (min-width: 1024px)
-    body.staticIndex
+    body.staticIndex,
+    body.workshopsShow
         article
             padding-right: 360px
         section.callout
             margin-right: -360px
 
 @media screen and (max-width: 1023px) and (min-width: 900px)
-    body.staticIndex
+    body.staticIndex,
+    body.workshopsShow
         article
             padding-right: 310px
         section.callout
             margin-right: -310px
-
-@media screen and (max-width: 899px)
