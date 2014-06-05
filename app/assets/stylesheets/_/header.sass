@@ -5,18 +5,30 @@ header
     left: 0
     position: absolute
     right: 0
+    +select(none)
     top: 0
 
     .brand
         left: 20px
         position: absolute
         top: 17px
+        z-index: 4
 
     nav
-        line-height: 70px
         position: absolute
-        right: 0
         top: 0
+
+@media screen and (min-width: 1236px)
+    header nav
+        right: 0
+
+@media screen and (max-width: 1235px)
+    header nav
+        right: 35px
+
+@media screen and (min-width: 541px)
+    header nav
+        line-height: 70px
         a
             color: $colorText
             display: inline-block
@@ -28,3 +40,60 @@ header
                 text-shadow: 0 0 35px $colorAccent
         a ~ a
             margin-left: 1em
+
+@media screen and (max-width: 541px)
+    header nav
+        padding-top: 70px
+        right: 0
+        width: 70px
+        z-index: 3
+        &:before
+            background: #2E3035
+            color: #fff
+            content: '\f0c9'
+            font-size: 2em
+            line-height: 70px
+            padding: 0 25px
+            position: absolute
+            right: 0
+            text-align: right
+            top: 0
+            z-index: 2
+        a
+            background: #2E3035
+            border-top: 1px solid darken(#2E3035, 2%)
+            bottom: 200%
+            color: #fff
+            display: block
+            font-size: 1.2em
+            padding: 0 1.5em
+            position: absolute
+            +transition(padding .2s linear)
+            z-index: 2
+            &:hover,
+            &:focus
+                background: $colorAccent2Darker
+                +border_radius(3px)
+        &.open
+            +box_shadow(0 0 50px #000)
+            left: 0
+            width: auto
+            &:before
+                left: 0
+            &:after
+                background: rgba(#000,.8)
+                bottom: 0
+                content: ''
+                left: 0
+                position: fixed
+                right: 0
+                top: 0
+                z-index: 1
+            a
+                bottom: auto
+                padding: 1em 1.5em
+                position: relative
+
+@media screen and (max-width: 480px)
+    header nav:before
+        padding: 0 15px
