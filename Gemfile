@@ -13,12 +13,11 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'kaminari'
 gem 'kramdown'
-gem 'pg', group: [:production]
+gem 'pg'
 gem 'pundit'
 gem 'rspec-rails', group: [:development, :test]
 gem 'sass-rails', '~> 4.0.0'
 gem 'sdoc', require: false, group: [:doc]
 gem 'sorcery'
-gem 'sqlite3', group: [:development, :test]
 gem 'squeel'
 gem 'uglifier', '>= 1.3.0'

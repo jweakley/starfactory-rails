@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140524012747) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admin_profiles", force: true do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20140524012747) do
     t.datetime "updated_at"
   end
 
-  add_index "admin_profiles", ["user_id"], name: "index_admin_profiles_on_user_id"
+  add_index "admin_profiles", ["user_id"], name: "index_admin_profiles_on_user_id", using: :btree
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id",    null: false
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 20140524012747) do
     t.datetime "updated_at"
   end
 
-  add_index "events", ["workshop_id"], name: "index_events_on_workshop_id"
+  add_index "events", ["workshop_id"], name: "index_events_on_workshop_id", using: :btree
 
   create_table "instructor_profiles", force: true do |t|
     t.string   "name"
@@ -50,7 +53,7 @@ ActiveRecord::Schema.define(version: 20140524012747) do
     t.datetime "updated_at"
   end
 
-  add_index "instructor_profiles", ["user_id"], name: "index_instructor_profiles_on_user_id"
+  add_index "instructor_profiles", ["user_id"], name: "index_instructor_profiles_on_user_id", using: :btree
 
   create_table "instructor_profiles_events", force: true do |t|
     t.integer  "instructor_profile_id"
@@ -59,7 +62,7 @@ ActiveRecord::Schema.define(version: 20140524012747) do
     t.datetime "updated_at"
   end
 
-  add_index "instructor_profiles_events", ["instructor_profile_id", "event_id"], name: "rel_instructor_profiles_events", unique: true
+  add_index "instructor_profiles_events", ["instructor_profile_id", "event_id"], name: "rel_instructor_profiles_events", unique: true, using: :btree
 
   create_table "student_profiles", force: true do |t|
     t.string   "name"
@@ -70,7 +73,7 @@ ActiveRecord::Schema.define(version: 20140524012747) do
     t.datetime "updated_at"
   end
 
-  add_index "student_profiles", ["user_id"], name: "index_student_profiles_on_user_id"
+  add_index "student_profiles", ["user_id"], name: "index_student_profiles_on_user_id", using: :btree
 
   create_table "tracks", force: true do |t|
     t.string   "name"
@@ -87,7 +90,7 @@ ActiveRecord::Schema.define(version: 20140524012747) do
     t.datetime "updated_at"
   end
 
-  add_index "tracks_workshops", ["track_id", "workshop_id"], name: "rel_tracks_workshops", unique: true
+  add_index "tracks_workshops", ["track_id", "workshop_id"], name: "rel_tracks_workshops", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                                       null: false
@@ -108,9 +111,9 @@ ActiveRecord::Schema.define(version: 20140524012747) do
     t.integer  "admin_profile_id"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
 
   create_table "votes", force: true do |t|
     t.integer  "user_id"
@@ -119,7 +122,7 @@ ActiveRecord::Schema.define(version: 20140524012747) do
     t.datetime "updated_at"
   end
 
-  add_index "votes", ["user_id", "workshop_id"], name: "index_votes_on_user_id_and_workshop_id", unique: true
+  add_index "votes", ["user_id", "workshop_id"], name: "index_votes_on_user_id_and_workshop_id", unique: true, using: :btree
 
   create_table "workshops", force: true do |t|
     t.string   "name"
