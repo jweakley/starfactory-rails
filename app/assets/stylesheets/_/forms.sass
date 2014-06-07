@@ -10,6 +10,7 @@ input[type="submit"]
     font-weight: $light
     line-height: 50px
     padding: 0 25px
+    position: relative
     text-align: center
     text-decoration: none
     text-transform: uppercase
@@ -24,6 +25,17 @@ input[type="submit"]
         &:focus
             background: lighten(#414348, 2%)
             color: #F9598D
+    &.icon
+        padding-right: 50px
+        &:after
+            line-height: 50px
+            position: absolute
+            right: 0
+            text-align: center
+            top: 0
+            width: 50px
+        &.vote:after
+            content: '\f087'
 
 article form
     background: rgba(#000, .1)
