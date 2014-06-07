@@ -1,6 +1,6 @@
-%section.workshop
-  .wrapper
-    = text_to_html @workshop.description
+%section.textual.workshop
+  %h1= @workshop.name
+  = text_to_html @workshop.description
 
 %aside.textual
   %dl.votes
@@ -17,4 +17,5 @@
       = link_to 'Unvote', workshop_vote_url(@workshop.id, @vote.id), method: :delete
   - else
     = link_to 'Vote', new_session_url
+
   = render 'shared/about'

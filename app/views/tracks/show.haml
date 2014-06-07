@@ -1,10 +1,9 @@
-%section.track
-  .wrapper
-    = text_to_html @track.description
-    %hr
-    %h2 This track has #{@track.workshops.size} Classes
-    %ul
-      - @track.workshops.each do |workshop|
-        %li= link_to workshop.name, workshop
+%section.textual.track
+  %h1= @track.name
+  = text_to_html @track.description
 
-= render 'shared/about'
+%aside.textual
+  %h2 This track has #{@track.workshops.size} Classes
+  %ul
+    - @track.workshops.each do |workshop|
+      %li= link_to workshop.name, workshop

@@ -9,7 +9,7 @@
           %th
       - if @student_profiles.total_pages > 1
         %tfoot
-          %th{ colspan: 3 }= paginate @student_profiles
+          %td{ colspan: 3 }= paginate @student_profiles
       %tbody
         - @student_profiles.each do |student_profile|
           %tr

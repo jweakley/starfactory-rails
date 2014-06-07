@@ -6,6 +6,9 @@ class Event < ActiveRecord::Base
   VALID_STATUSES = %w(Active Disabled)
 
   scope :active, -> { where { status.eq 'Active' } }
+  scope :upcoming, -> { where { starts_at.gteq Time.now } }
+  scope :current, -> { where { ends_at.gt Time.now } }
+  scope :ongoing, -> { where { (starts_at.lteq Time.now) & (ends_at.gteq Time.now) } }
 
   delegate :name, to: :workshop, prefix: true
 end

@@ -1,7 +1,6 @@
-%section
-  .wrapper
-    %h1 New Track
-    = form_for @track do |f|
-      = render 'fields', f: f
-      .actions
-        = button_tag 'Submit'
+%section.textual
+  %h1 New Track
+  = form_for @track do |f|
+    = render 'fields', f: f
+    .actions
+      = button_tag 'Submit'

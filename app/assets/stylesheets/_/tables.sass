@@ -1,0 +1,88 @@
+table
+    margin: 1em 0
+    width: 100%
+
+thead th
+    background: $colorAccent2Darker
+    color: #000
+    font-size: 1.2em
+    font-weight: $heavy
+    padding: .8em
+    &:first-child,
+    &:first-of-type
+        +border_radius(3px, 0, 0, 3px)
+    &:last-child,
+    &:last-of-type
+        +border_radius(0, 3px, 3px, 0)
+
+tfoot td
+    background: rgba(#000, .4)
+    +border_radius(3px)
+    font-size: .9em
+    padding: 0 1em
+    span
+        display: inline-block
+        padding: 1em .5em
+    span a
+        background: #2E3035
+        +border_radius(1em)
+        color: #90939b
+        display: block
+        margin: -.2em -.5em
+        padding: .2em .5em
+        text-decoration: none
+        &:focus,
+        &:hover
+            background: $colorAccent
+            color: #fff
+
+tbody
+    td, th
+        padding: 1em
+        &:first-child,
+        &:first-of-type
+            +border_radius(3px, 0, 0, 3px)
+        &:last-child,
+        &:last-of-type
+            +border_radius(0, 3px, 3px, 0)
+    tr:nth-child(odd)
+        td, th
+            background: rgba(#000, .1)
+    tr:nth-child(even)
+        td, th
+            background: rgba(#000, .2)
+    td.actions
+        font-size: 0
+        padding: 0
+        width: 1px
+        a
+            background: $colorAccentDarker
+            +border_radius(2em)
+            color: #fff
+            display: inline-block
+            line-height: 2em
+            margin: .5em
+            font-size: $baseFontSize
+            overflow: hidden
+            position: relative
+            text-indent: -999em
+            +transition(background .2s linear, color .2s linear)
+            width: 2em
+            &:before
+                left: 0
+                line-height: 2em
+                position: absolute
+                right: 0
+                text-align: center
+                top: 0
+            &.delete:before
+                content: '\f00d'
+            &.edit:before
+                content: '\f040'
+            &.view:before
+                content: '\f06e'
+            &:hover,
+            &:focus
+                background: $colorAccent
+        a ~ a
+            margin-left: 0

@@ -25,9 +25,14 @@ input[type="submit"]
             color: #F9598D
 
 article form
+    background: rgba(#000, .1)
+    +border_radius(3px)
+    margin: 2em 0
+    padding: 2em
     text-align: left
 
     label
+        color: #fff
         display: inline-block
         margin: .5em 0
 
@@ -76,8 +81,12 @@ article form
                 width: 1.6em
         input:checked ~ label:before
             color: #fff
+        input:focus ~ label:before,
         &:hover label:before
             background: lighten(#3B3D42, 5%)
+
+    .field ~ .field
+        margin-top: 1.5em
 
     .actions
         margin: 1em 0 0
@@ -85,10 +94,7 @@ article form
 body.sessions,
 body.users
     article form
-        background: rgba(#000, .1)
-        +border_radius(3px)
         margin: 2em auto
-        padding: 2em
         max-width: 25em
 
 @media screen and (min-width: 541px)

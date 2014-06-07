@@ -1,7 +1,6 @@
-%section
-  .wrapper
-    %h1 New Workshop
-    = form_for @workshop do |f|
-      = render 'fields', f: f
-      .actions
-        = button_tag 'Submit'
+%section.textual
+  %h1 New Workshop
+  = form_for @workshop do |f|
+    = render 'fields', f: f
+    .actions
+      = button_tag 'Submit'

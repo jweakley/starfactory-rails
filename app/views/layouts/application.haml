@@ -3,7 +3,7 @@
   %head
     %title #{defined?(@page_title) ? "#{@page_title} / " : ''} Starfactory
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=0.5' }
-    = stylesheet_link_tag '//fonts.googleapis.com/css?family=Raleway:100,300,700'
+    = stylesheet_link_tag '//fonts.googleapis.com/css?family=Raleway:100,300,600'
     = stylesheet_link_tag '//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'
     = stylesheet_link_tag 'application', media: :all
     = yield :header
@@ -25,6 +25,8 @@
 
     #body
       %article
+        - unless current_page? root_url
+          %nav.breadcrumbs= render_breadcrumbs separator: ''
         - if !!error
           %mark#flash.error= error
         - elsif !!notice

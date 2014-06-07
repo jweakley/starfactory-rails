@@ -20,14 +20,16 @@ article .textual
     h1,
     h2,
     h3
-        color: #3dc6ae
         font-weight: $light
     h1
+        color: #fff
         font-size: 3em
     h2
-        font-size: 2em
+        color: $colorAccent2
+        font-size: 1.8em
     h3
-        font-size: 1.5em
+        color: $colorAccent2
+        font-size: 1.4em
 
     p
         line-height: 1.4em
@@ -41,17 +43,17 @@ section.callout
     +border_radius(3px)
     color: $colorTextBold
     padding: 25px
+    text-align: center
     h1
         font-size: 2em
         font-weight: $light
 
 
-body.staticIndex,
-body.workshopsShow
+body.withSidebar
     article section
         float: left
         width: 100%
-    section.callout
+    article section.callout
         float: none
         width: auto
 
@@ -61,17 +63,15 @@ body.users
         text-align: center
 
 @media screen and (min-width: 1024px)
-    body.staticIndex,
-    body.workshopsShow
+    body.withSidebar
         article
             padding-right: 360px
-        section.callout
+        article section.callout
             margin-right: -360px
 
 @media screen and (max-width: 1023px) and (min-width: 900px)
-    body.staticIndex,
-    body.workshopsShow
+    body.withSidebar
         article
             padding-right: 310px
-        section.callout
+        article section.callout
             margin-right: -310px
