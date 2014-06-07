@@ -34,9 +34,52 @@ article .textual
     p
         line-height: 1.4em
 
+    ul, ol
+        li
+            margin-left: 3em
+    ul > li
+        list-style: square
+    ol > li
+        list-style: decimal
+
+    dl
+        &:after
+            +clear_fix()
+        dt, dd
+            +box_sizing(border-box)
+            float: left
+            margin: 1px 0
+            padding: 1em
+        dt
+            background: rgba(#fff, .1)
+            +border_radius(3px, 0, 0, 3px)
+            clear: both
+            font-weight: $heavy
+            text-align: right
+            width: 30%
+        dd
+            background: rgba(#000, .1)
+            +border_radius(0, 3px, 3px, 0)
+            width: 70%
+
     h1, h2, h3, p, ul, ol, dl, blockquote, form, table
         ~h1, ~h2, ~h3, ~p, ~ul, ~ol, ~dl, ~blockquote, ~form, ~table
             margin-top: 1.5em
+
+article .progress
+    background: #47494F
+    +border_radius(1em)
+    height: 1.4em
+    line-height: 1.4em
+    margin: 1em 0
+    .bar
+        background: $colorAccentDarker
+        +border_radius(1em)
+        +box_sizing(border-box)
+        color: #fff
+        min-width: 1.5em
+        padding: 0 .5em
+        text-align: right
 
 section.callout
     background: $colorAccent2Darker
@@ -47,15 +90,6 @@ section.callout
     h1
         font-size: 2em
         font-weight: $light
-
-
-body.withSidebar
-    article section
-        float: left
-        width: 100%
-    article section.callout
-        float: none
-        width: auto
 
 body.sessions,
 body.users
@@ -68,6 +102,15 @@ body.users
             padding-right: 360px
         article section.callout
             margin-right: -360px
+
+@media screen and (min-width: 900px)
+    body.withSidebar
+        article section
+            float: left
+            width: 100%
+        article section.callout
+            float: none
+            width: auto
 
 @media screen and (max-width: 1023px) and (min-width: 900px)
     body.withSidebar
