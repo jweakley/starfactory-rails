@@ -1,7 +1,6 @@
-%section
-  .wrapper
-    %h1 Editing Student Profile
-    = form_for @student_profile do |f|
-      = render 'fields', f: f
-      .actions
-        = button_tag 'Save'
+%section.textual
+  %h1 Editing Student Profile
+  = form_for @student_profile do |f|
+    = render 'fields', f: f
+    .actions
+      = button_tag 'Save'

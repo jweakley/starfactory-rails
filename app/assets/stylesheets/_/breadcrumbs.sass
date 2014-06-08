@@ -1,29 +1,36 @@
-nav.breadcrumbs
-    color: #90939b
-    font-size: .9em
-    line-height: 1.2em
-    margin: 0 0 2em
-    +select(none)
-    text-align: left
-    a
-        background: #47494F
-        +border_radius(1em)
-        color: #000
-        font-weight: $heavy
-        display: inline-block
-        margin-right: 1em
-        padding: 0 .5em
-        position: relative
-        text-decoration: none
+@media screen and (min-width: 540px)
+    nav.breadcrumbs
+        color: #90939b
+        font-size: .9em
+        line-height: 1.2em
+        margin: 0 0 2em
+        overflow: hidden
+        +select(none)
+        text-align: left
         white-space: nowrap
-        &:after
-            color: #90939b
-            content: '/'
-            left: 100%
-            position: absolute
-            text-align: center
-            width: 1em
-        &:hover,
-        &:focus
-            background: $colorAccent2
+        a
+            background: #47494F
+            +border_radius(1em)
             color: #000
+            font-weight: $heavy
+            display: inline-block
+            margin-right: 1em
+            padding: 0 .5em
+            position: relative
+            text-decoration: none
+            white-space: nowrap
+            &:after
+                color: #90939b
+                content: '/'
+                left: 100%
+                position: absolute
+                text-align: center
+                width: 1em
+            &:hover,
+            &:focus
+                background: $colorAccent2
+                color: #000
+
+@media screen and (max-width: 539px)
+    nav.breadcrumbs
+        display: none

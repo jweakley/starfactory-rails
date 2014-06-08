@@ -1,35 +1,6 @@
 %section.textual
   %h1 Workshops
-  %table
-    %thead
-      %tr
-        %th Name
-        %th Track
-        %th Instructor
-        %th Status
-        %th
-    - if @workshops.total_pages > 1
-      %tfoot
-        %td{ colspan: 5 }= paginate @workshops
-    %tbody
-      - @workshops.each do |workshop|
-        %tr
-          %td= link_to workshop.name, workshop
-          %td
-            - if workshop.tracks.any?
-              - workshop.tracks.each do |track|
-                = link_to track.name, track
-            - else
-              &mdash;
-          %td
-            - if workshop.events.any?
-              - workshop.events.each do |event|
-                - event.instructor_profiles.each do |instructor_profile|
-                  = link_to instructor_profile.name, instructor_profile
-            - else
-              &mdash;
-          %td= workshop.status
-          %td.actions
-            %div
-              - if logged_in? && current_user.admin?
-                = link_to workshop.name, edit_workshop_url(workshop), class: 'edit'
+  %ul.tiles
+    - @workshops.each do |workshop|
+      %li
+        %h3= link_to workshop.name, workshop

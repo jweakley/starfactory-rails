@@ -8,11 +8,7 @@ class TracksController < ApplicationController
   # GET /tracks
   def index
     @page_title = 'Tracks'
-    if logged_in? && current_user.admin?
-      @tracks = Track.page params[:page]
-    else
-      @tracks = Track.active.page params[:page]
-    end
+    @tracks = Track.active
     authorize @tracks
     respond_with @tracks
   end

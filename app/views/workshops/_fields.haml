@@ -7,12 +7,6 @@
     .field.checkbox
       = c.check_box
       = c.label
-%fieldset
-  %legend Instructors
-  = f.collection_check_boxes :instructor_profile_ids, InstructorProfile.all, :id, :name do |c|
-    .field.checkbox
-      = c.check_box
-      = c.label
 .field
   = f.label :description
   = f.text_area :description

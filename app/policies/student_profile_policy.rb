@@ -48,4 +48,9 @@ class StudentProfilePolicy < Struct.new(:user, :student_profile)
   def destroy?
     false
   end
+
+  # Used by the admin controller
+  def students?
+    !!user && user.admin?
+  end
 end

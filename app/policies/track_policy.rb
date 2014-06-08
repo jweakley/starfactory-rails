@@ -48,4 +48,9 @@ class TrackPolicy < Struct.new(:user, :track)
   def destroy?
     false
   end
+
+  # Used by the admin controller
+  def tracks?
+    !!user && user.admin?
+  end
 end

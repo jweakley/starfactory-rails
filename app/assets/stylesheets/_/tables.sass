@@ -51,9 +51,20 @@ tbody
     tr:nth-child(even)
         td, th
             background: rgba(#000, .2)
+    time
+        +border_radius(1em)
+        color: #93979f
+        display: inline-block
+        font-size: .9em
+        font-weight: $heavy
+        vertical-align: middle
+        &:before
+            content: '\f08d'
+            padding-right: .5em
     td.actions
         font-size: 0
         padding: 0
+        white-space: nowrap
         width: 1px
         a
             background: $colorAccentDarker

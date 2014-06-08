@@ -1,0 +1,20 @@
+%section.textual
+  %h1 Students
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Email
+        %th
+    - if @student_profiles.total_pages > 1
+      %tfoot
+        %td{ colspan: 3 }= paginate @student_profiles
+    %tbody
+      - @student_profiles.each do |student_profile|
+        %tr
+          %td= link_to student_profile.name, edit_student_profile_url(student_profile)
+          %td= link_to student_profile.email, "mailto:#{student_profile.email}"
+          %td.actions
+            %div
+              = link_to 'View', student_profile, class: 'view'
+              = link_to 'Edit', edit_student_profile_url(student_profile), class: 'edit'

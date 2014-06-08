@@ -1,0 +1,26 @@
+%section.textual
+  %h1 Events
+  %table
+    %thead
+      %tr
+        %th Workshop
+        %th Start
+        %th End
+        %th Status
+        %th
+    - if @events.total_pages > 1
+      %tfoot
+        %td{ colspan: 5 }= paginate @events
+    %tbody
+      - @events.each do |event|
+        %tr
+          %td= link_to event.workshop_name, edit_event_url(event)
+          %td
+            %time= event.starts_at.strftime '%b %e, %Y @ %l:%M %P'
+          %td
+            %time= event.ends_at.strftime '%b %e, %Y @ %l:%M %P'
+          %td= event.status
+          %td.actions
+            %div
+              = link_to 'View', event, class: 'view'
+              = link_to 'Edit', edit_event_url(event), class: 'edit'

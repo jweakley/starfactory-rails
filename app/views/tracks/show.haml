@@ -3,7 +3,9 @@
   = text_to_html @track.description
 
 %aside.textual
-  %h2 This track has #{@track.workshops.size} Classes
-  %ul
+  %h2 Classes
+  %ol.menu
     - @track.workshops.each do |workshop|
       %li= link_to workshop.name, workshop
+  %hr
+  = render 'shared/about'

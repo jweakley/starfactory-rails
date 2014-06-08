@@ -1,4 +1,4 @@
-class InstructorProfilePolicy < Struct.new(:user, :instructor_profile)
+class EventPolicy < Struct.new(:user, :event)
   class Scope < Struct.new(:user, :scope)
     def resolve
       case
@@ -15,7 +15,7 @@ class InstructorProfilePolicy < Struct.new(:user, :instructor_profile)
   def permitted_attributes
     case
     when user.admin?
-      [:name, :bio, :user, :avatar, :user_id]
+      [:starts_at, :ends_at, :workshop_id, :status]
     else
       []
     end
@@ -50,7 +50,7 @@ class InstructorProfilePolicy < Struct.new(:user, :instructor_profile)
   end
 
   # Used by the admin controller
-  def instructors?
+  def events?
     !!user && user.admin?
   end
 end

@@ -26,10 +26,10 @@ article .textual
         font-size: 3em
     h2
         color: $colorAccent2
-        font-size: 1.8em
+        font-size: 2.2em
     h3
         color: $colorAccent2
-        font-size: 1.4em
+        font-size: 1.8em
 
     p
         line-height: 1.4em
@@ -80,6 +80,25 @@ article .progress
         min-width: 1.5em
         padding: 0 .5em
         text-align: right
+
+article
+    ul.menu > li,
+    ol.menu > li
+        margin-left: 0
+        list-style: none
+        a
+            background: rgba(#000,.1)
+            +border_radius(3px)
+            color: $colorAccentDarker
+            display: block
+            padding: 1em
+            text-decoration: none
+            &:hover,
+            &:focus
+                background: rgba(#000,.2)
+                color: $colorAccent
+        ~ li
+            margin-top: 2px
 
 section.callout
     background: $colorAccent2Darker

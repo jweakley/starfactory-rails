@@ -1,22 +1,6 @@
 %section.textual
   %h1 Tracks
-  %table
-    %thead
-      %tr
-        %th Name
-        %th Workshops
-        %th Status
-        %th
-    - if @tracks.total_pages > 1
-      %tfoot
-        %td{ colspan: 4 }= paginate @tracks
-    %tbody
-      - @tracks.each do |track|
-        %tr
-          %td= link_to track.name, track
-          %td= track.workshops.count
-          %td= track.status
-          %td.actions
-            %div
-              - if logged_in? && current_user.admin?
-                = link_to track.name, edit_track_url(track), class: 'edit'
+  %ul.tiles
+    - @tracks.each do |track|
+      %li
+        %h3= link_to track.name, track
