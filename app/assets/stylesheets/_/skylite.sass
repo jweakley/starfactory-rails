@@ -8,7 +8,7 @@ body.busy:after,
     z-index: 97
 
 #mask:after
-    background: #000
+    background: #2E3035
     bottom: 0
     content: ''
     left: 0
@@ -45,7 +45,9 @@ body.busy.hasMask
 
 body > .modal
     background: #fff
-    +box_shadow(0 0 50px rgba(#120E0A,.7))
+    +border_radius(3px)
+    +box_shadow(0 0 50px #000)
+    color: #424448
     display: none
     left: 50%
     margin: -100px 0 0 -300px
@@ -56,20 +58,25 @@ body > .modal
     width: 500px
     z-index: 99
     h1
-        color: #2b75a7
+        color: $colorAccent
         font-size: 2em
         font-weight: 200
         line-height: 1em
-        text-transform: capitalize
         + p
             margin-top: 2em
     p
         font-size: 1.1em
     .actions
-        background: #DEECF2
+        background: #EBEDF0
+        +border_radius(0, 0, 3px, 3px)
         margin: 50px -50px -50px
         padding: 10px
         text-align: center
+        button
+            background: $colorAccent2Darker
+            &:hover,
+            &:focus
+                background: $colorAccent2 !important
         button + button
             margin-left: 10px
 

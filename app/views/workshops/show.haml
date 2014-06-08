@@ -30,6 +30,6 @@
       - else
         = link_to 'Remove Vote', workshop_vote_url(@workshop.id, @vote.id), method: :delete
     - else
-      = link_to 'Vote', new_session_url
+      = link_to 'Vote', new_session_url, class: 'btn icon vote', data: { confirm: "Please login to vote.", buttontext: 'Login' }
   %hr
   = render 'shared/about'

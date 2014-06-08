@@ -3,7 +3,7 @@ button,
 input[type="button"],
 input[type="submit"]
     background: $colorAccentDarker
-    +border_radius(3px)
+    +border_radius(50px)
     color: #fff
     display: inline-block
     font-size: 1.2em
@@ -127,3 +127,12 @@ body.users
     input[type="url"],
     textarea
         width: 100%
+
+@media screen and (max-width: 480px)
+    form
+        .btn,
+        button,
+        input[type="button"],
+        input[type="submit"]
+            +box_sizing(border-box)
+            width: 100%
