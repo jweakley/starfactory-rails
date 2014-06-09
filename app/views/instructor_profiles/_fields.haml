@@ -4,7 +4,7 @@
 = f.fields_for :user do |uf|
   .field
     = uf.label :email
-    = uf.text_field :email
+    = uf.email_field :email, spellcheck: false
 .field
   = f.label :bio
   = f.text_area :bio

@@ -8,7 +8,7 @@
     text-indent: 0 !important
 
 body
-    background: #2e3035
+    background: image-url('bg-class.jpg') 50% 0 no-repeat #2e3035
     color: $colorText
     font: $baseFontSize $primary
     font-weight: $regular
@@ -62,6 +62,10 @@ hr
         background: $colorAccent2Darker
     &.error
         background: $colorAccentDarker
+
+@media screen and (min-width: 1601px)
+    body
+        +bg_size(100% auto)
 
 @media screen and (min-width: 541px)
     #body

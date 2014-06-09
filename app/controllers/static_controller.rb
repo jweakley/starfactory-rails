@@ -1,7 +1,11 @@
 class StaticController < ApplicationController
   def index
     @active_events = Event.active.limit 3
-    @voted_workshops = Workshop.voted.limit 3
+    @voted_workshops = Workshop.voted.limit 5
+  end
+
+  def contact
+    add_breadcrumb 'Contact'
   end
 
   def status403
