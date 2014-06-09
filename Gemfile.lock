@@ -32,6 +32,7 @@ GEM
     bcrypt-ruby (3.1.2)
     breadcrumbs_on_rails (2.3.0)
     builder (3.1.4)
+    coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -74,6 +75,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_source (0.8.2)
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.9.2)
@@ -90,6 +92,10 @@ GEM
     polyamorous (0.6.4)
       activerecord (>= 3.0)
     polyglot (0.3.4)
+    pry (0.9.12.6)
+      coderay (~> 1.0)
+      method_source (~> 0.8)
+      slop (~> 3.4)
     pundit (0.2.3)
       activesupport (>= 3.0.0)
     rack (1.5.2)
@@ -132,6 +138,7 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    slop (3.5.0)
     sorcery (0.8.5)
       bcrypt-ruby (>= 3.0)
       oauth (~> 0.4.4)
@@ -175,6 +182,7 @@ DEPENDENCIES
   kaminari
   kramdown
   pg
+  pry
   pundit
   rails (= 4.0.2)
   rspec-rails

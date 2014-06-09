@@ -15,21 +15,27 @@
           = link_to event.starts_at.strftime('%b %e, %Y @ %l:%M %P'), event
 
 %aside.textual
-  %h3 Votes
-  .progress
-    - percent = @workshop.votes.count.to_d / @workshop.votes_goal.to_d * 100
-    .bar{ style: "width: #{percent < 100 ? percent : 100}%" }
-      = @workshop.votes.count
-  %p
-    This class needs at least #{pluralize @workshop.votes_goal, 'vote', 'votes'}
-    before it gets scheduled.
-  %p
-    - if current_user
-      - if !@vote
-        = link_to 'Vote', workshop_votes_url(@workshop.id), method: :post, class: 'btn icon vote'
+  - if @workshop.events.current.any?
+    %h3 Schedule
+    %ol.menu
+      - @workshop.events.current.each do |event|
+        %li= link_to event.starts_at.strftime('%b %e, %Y @ %l:%M %P'), event
+  - else
+    %h3 Votes
+    .progress
+      - percent = @workshop.votes.count.to_d / @workshop.votes_goal.to_d * 100
+      .bar{ style: "width: #{percent < 100 ? percent : 100}%" }
+        = @workshop.votes.count
+    %p
+      This class needs at least #{pluralize @workshop.votes_goal, 'vote', 'votes'}
+      before it gets scheduled.
+    %p
+      - if current_user
+        - if current_user.voted_on(@workshop)
+          = link_to 'Remove Vote', workshop_vote_url(@workshop.id, @vote.id), method: :delete
+        - else
+          = link_to 'Vote', workshop_votes_url(@workshop.id), method: :post, class: 'btn icon vote'
       - else
-        = link_to 'Remove Vote', workshop_vote_url(@workshop.id, @vote.id), method: :delete
-    - else
-      = link_to 'Vote', new_session_url, class: 'btn icon vote', data: { confirm: "Please login to vote.", buttontext: 'Login' }
+        = link_to 'Vote', new_session_url, class: 'btn icon vote', data: { confirm: "Please login to vote.", buttontext: 'Login' }
   %hr
   = render 'shared/about'

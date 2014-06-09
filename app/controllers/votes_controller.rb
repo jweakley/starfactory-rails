@@ -10,7 +10,9 @@ class VotesController < ApplicationController
         :"#{object}_id" => params[:"#{object}_id"]
       )
       begin
-        @vote.save
+        if @vote.save
+          flash[:notice] = "We got your vote. You'll be notified when the class gets scheduled."
+        end
       rescue ActiveRecord::RecordNotUnique
         flash[:notice] = 'You already voted for this.'
       end

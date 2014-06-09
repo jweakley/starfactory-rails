@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id          :integer          not null, primary key
+#  status      :string(255)      default("Active")
+#  starts_at   :datetime
+#  ends_at     :datetime
+#  workshop_id :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do

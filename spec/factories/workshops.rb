@@ -5,11 +5,13 @@
 #  id          :integer          not null, primary key
 #  name        :string(255)
 #  description :text
-#  status      :string(255)
+#  status      :string(255)      default("Active")
 #  banner      :string(255)
 #  icon        :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
+#  votes_count :integer          default(0)
+#  votes_goal  :integer          default(0)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

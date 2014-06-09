@@ -9,7 +9,7 @@ def add_event(workshop, starts_at, ends_at)
   )
 end
 
-Workshop.all.each_with_index do |workshop, w|
+Workshop.page(1).per(3).each_with_index do |workshop, w|
   date = (Time.now + (w + 7).days).strftime('%b %e, %Y 17:00').to_datetime
   add_event(workshop, date, (date + 3.hours))
 end

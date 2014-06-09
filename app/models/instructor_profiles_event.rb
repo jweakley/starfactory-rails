@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: instructor_profile_events
+# Table name: instructor_profiles_events
 #
 #  id                    :integer          not null, primary key
 #  instructor_profile_id :integer

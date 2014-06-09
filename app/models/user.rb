@@ -24,5 +24,17 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
+  has_many :votes
+
   include Adminable, Instructorable, Studentable
+
+  def voted_on(resource)
+    resource_id = resource.id
+    case resource.class.name
+    when 'Workshop'
+      self.votes.where{ workshop_id.eq resource_id }.any?
+    else
+      false
+    end
+  end
 end

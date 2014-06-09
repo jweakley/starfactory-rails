@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'kaminari'
 gem 'kramdown'
 gem 'pg'
+gem 'pry', group: [:development, :test]
 gem 'pundit'
 gem 'rspec-rails', group: [:development, :test]
 gem 'sass-rails', '~> 4.0.0'

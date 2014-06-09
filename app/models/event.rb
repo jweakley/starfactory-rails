@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id          :integer          not null, primary key
+#  status      :string(255)      default("Active")
+#  starts_at   :datetime
+#  ends_at     :datetime
+#  workshop_id :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class Event < ActiveRecord::Base
   belongs_to :workshop
   has_many :instructor_profiles_events
