@@ -1,6 +1,10 @@
 .field
   = f.label :name
   = f.text_field :name
+= f.fields_for :user do |uf|
+  .field
+    = uf.label :email
+    = uf.text_field :email
 .field
   = f.label :bio
   = f.text_area :bio

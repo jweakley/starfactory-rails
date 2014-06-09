@@ -8,7 +8,7 @@ class TracksController < ApplicationController
   # GET /tracks
   def index
     @page_title = 'Tracks'
-    @tracks = Track.active
+    @tracks = Track.active.by_name.page params[:page]
     authorize @tracks
     respond_with @tracks
   end

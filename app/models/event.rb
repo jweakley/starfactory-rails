@@ -22,6 +22,7 @@ class Event < ActiveRecord::Base
   scope :upcoming, -> { where { starts_at.gteq Time.now } }
   scope :current, -> { where { ends_at.gt Time.now } }
   scope :ongoing, -> { where { (starts_at.lteq Time.now) & (ends_at.gteq Time.now) } }
+  scope :by_soonest, order(starts_at: :asc)
 
   delegate :name, to: :workshop, prefix: true
 end

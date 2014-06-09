@@ -7,7 +7,7 @@ class InstructorProfilesController < ApplicationController
 
   # GET /instructors
   def index
-    @instructor_profiles = InstructorProfile.page params[:page]
+    @instructor_profiles = InstructorProfile.by_name.page params[:page]
     authorize @instructor_profiles
     respond_with @instructor_profiles
   end

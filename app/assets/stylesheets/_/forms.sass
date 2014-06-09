@@ -36,6 +36,8 @@ input[type="submit"]
             text-align: center
             top: 0
             width: 50px
+        &.new:after
+            content: '\f067'
         &.vote:after
             content: '\f087'
 
@@ -68,8 +70,10 @@ article form
         line-height: 30px
         padding: 10px 15px
         +select(text)
-        &:focus
+        &:focus,
+        &:hover
             background: lighten(#3B3D42, 2%)
+        &:focus
             color: $colorTextBold
 
     textarea

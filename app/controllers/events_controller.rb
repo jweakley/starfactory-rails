@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   # GET /events
   def index
     @page_title = 'Events'
-    @events = Event.current.page params[:page]
+    @events = Event.current.by_soonest.page params[:page]
     authorize @events
     respond_with @events
   end

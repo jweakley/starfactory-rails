@@ -17,4 +17,5 @@ class Track < ActiveRecord::Base
   VALID_STATUSES = %w(Active Disabled)
 
   scope :active, -> { where { status.eq 'Active' } }
+  scope :by_name, order(name: :asc)
 end

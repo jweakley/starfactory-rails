@@ -24,6 +24,7 @@ class Workshop < ActiveRecord::Base
   VALID_STATUSES = %w(Active Disabled)
 
   scope :active, -> { where { status.eq 'Active' } }
+  scope :by_name, order(name: :asc)
   scope :voted, includes(:events)
     .where( events: { id: nil })
     .order('votes_count desc')

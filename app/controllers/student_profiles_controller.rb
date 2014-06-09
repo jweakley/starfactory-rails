@@ -6,7 +6,7 @@ class StudentProfilesController < ApplicationController
 
   # GET /students
   def index
-    @student_profiles = StudentProfile.page params[:page]
+    @student_profiles = StudentProfile.by_name.page params[:page]
     authorize @student_profiles
     respond_with @student_profiles
   end

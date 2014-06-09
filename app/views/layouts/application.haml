@@ -6,6 +6,7 @@
     = stylesheet_link_tag '//fonts.googleapis.com/css?family=Raleway:100,300,600'
     = stylesheet_link_tag '//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'
     = stylesheet_link_tag 'application', media: :all
+    = stylesheet_link_tag 'admin', media: :all if params[:controller] == 'admin'
     = yield :header
     = favicon_link_tag asset_path('favicon.png')
     = csrf_meta_tags
@@ -16,6 +17,7 @@
         = link_to root_url, class: 'brand' do
           = svg_image 'starfactory-logo', alt: 'Starfactory'
         %nav
+          = link_to 'Admin', admin_url if logged_in? && current_user.admin?
           = link_to 'Workshops', tracks_url
           - unless logged_in?
             = link_to 'Students', login_url
