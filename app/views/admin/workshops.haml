@@ -5,12 +5,13 @@
       %tr
         %th Name
         %th Track
-        %th Instructor
+        %th Votes
+        %th Scheduled
         %th Status
         %th
     - if @workshops.total_pages > 1
       %tfoot
-        %td{ colspan: 5 }= paginate @workshops
+        %td{ colspan: 6 }= paginate @workshops
     %tbody
       - @workshops.each do |workshop|
         %tr
@@ -22,13 +23,19 @@
             - else
               &mdash;
           %td
-            - if workshop.events.any?
-              - workshop.events.each do |event|
-                - event.instructor_profiles.each do |instructor_profile|
-                  = link_to instructor_profile.name, instructor_profile
+            .progress
+              - percent = workshop.votes.count.to_d / workshop.votes_goal.to_d * 100
+              .bar{ style: "width: #{percent < 100 ? percent : 100}%" }
+                = workshop.votes.count
+          %td
+            - if workshop.events.current.any?
+              - workshop.events.current.each do |event|
+                %time.icon.event
+                  = link_to event.starts_at.strftime('%b %e, %Y %l:%M %P'), event
             - else
               &mdash;
-          %td= workshop.status
+          %td
+            %mark.icon{ class: under_camel(workshop.status) }= workshop.status
           %td.actions
             %div
               = link_to 'View', workshop, class: 'view'

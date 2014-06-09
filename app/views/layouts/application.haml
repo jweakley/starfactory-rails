@@ -16,7 +16,7 @@
         = link_to root_url, class: 'brand' do
           = svg_image 'starfactory-logo', alt: 'Starfactory'
         %nav
-          = link_to 'Classes', root_url(anchor: 'tracks')
+          = link_to 'Workshops', tracks_url
           - unless logged_in?
             = link_to 'Students', login_url
           = link_to 'Contact', '#'

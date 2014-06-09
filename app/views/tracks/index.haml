@@ -3,4 +3,6 @@
   %ul.tiles
     - @tracks.each do |track|
       %li
-        %h3= link_to track.name, track
+        = link_to track do
+          %h3= track.name
+          %dfn= pluralize track.workshops.count, 'Workshop', 'Workshops'

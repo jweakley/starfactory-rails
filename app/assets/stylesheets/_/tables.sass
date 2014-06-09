@@ -16,7 +16,7 @@ thead th
         +border_radius(0, 3px, 3px, 0)
 
 tfoot td
-    background: rgba(#000, .4)
+    background: rgba(#000, .5)
     +border_radius(3px)
     font-size: .9em
     padding: 0 1em
@@ -39,6 +39,7 @@ tfoot td
 tbody
     td, th
         padding: 1em
+        +transition(background .2s linear)
         &:first-child,
         &:first-of-type
             +border_radius(3px, 0, 0, 3px)
@@ -51,16 +52,22 @@ tbody
     tr:nth-child(even)
         td, th
             background: rgba(#000, .2)
+    tr:hover
+        td, th
+            background: rgba(#000, .3)
     time
         +border_radius(1em)
         color: #93979f
-        display: inline-block
+        display: block
         font-size: .9em
         font-weight: $heavy
         vertical-align: middle
-        &:before
-            content: '\f08d'
-            padding-right: .5em
+        &.icon:before
+            color: $colorAccentDarker
+
+    td .progress
+        margin: 0
+
     td.actions
         font-size: 0
         padding: 0

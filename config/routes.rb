@@ -10,11 +10,11 @@ Starfactory::Application.routes.draw do
 
   resources :users
   resources :sessions
-  resources :events, only: [:index, :show]
-  resources :instructor_profiles, path: 'instructors', only: [:index, :show]
-  resources :student_profiles, path: 'students', only: [:show, :edit, :update]
-  resources :tracks, only: [:index, :show]
-  resources :workshops, concerns: :votable, only: [:index, :show]
+  resources :events
+  resources :instructor_profiles, path: 'instructors'
+  resources :student_profiles, path: 'students'
+  resources :tracks
+  resources :workshops, concerns: :votable
 
   scope :admin do
     get '' => 'admin#index', as: 'admin'
@@ -23,11 +23,6 @@ Starfactory::Application.routes.draw do
     get 'tracks' => 'admin#tracks', as: 'admin_tracks'
     get 'students' => 'admin#students', as: 'admin_students'
     get 'workshops' => 'admin#workshops', as: 'admin_workshops'
-    resources :events, except: [:index, :show]
-    resources :instructor_profiles, path: 'instructors', except: [:index, :show]
-    resources :student_profiles, path: 'students', except: [:show, :edit, :update]
-    resources :tracks, except: [:index, :show]
-    resources :workshops, except: [:index, :show]
   end
 
   get '403' => 'static#status403', as: 'status_403'
@@ -35,5 +30,5 @@ Starfactory::Application.routes.draw do
   get '500' => 'static#status500', as: 'status_500'
 
   root 'static#index'
-  match '*derp', to: 'static#status404', via: '*'
+  match '*', to: 'static#status404', via: '*'
 end

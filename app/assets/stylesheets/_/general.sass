@@ -37,7 +37,16 @@ hr
     height: 0
     margin: 2em 0
 
-mark.icon
+.icon
+    &:before
+        color: $colorAccent2Darker
+        padding: 0 .25em
+    &.active:before
+        content: '\f004'
+    &.disabled:before
+        content: '\f05e'
+    &.event:before
+        content: '\f08d'
     &.vote:before
         content: '\f087'
 

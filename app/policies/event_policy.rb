@@ -15,7 +15,8 @@ class EventPolicy < Struct.new(:user, :event)
   def permitted_attributes
     case
     when user.admin?
-      [:starts_at, :ends_at, :workshop_id, :status]
+      [:starts_at, :ends_at, :workshop_id, :status,
+        :instructor_profile_ids => []]
     else
       []
     end

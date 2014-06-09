@@ -3,7 +3,7 @@
   = text_to_html @track.description
 
 %aside.textual
-  %h2 Classes
+  %h2 Workshops
   %ol.menu
     - @track.workshops.each do |workshop|
       %li= link_to workshop.name, workshop

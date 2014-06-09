@@ -1,1 +1,23 @@
-%h1 Hello World
+%section.textual
+  %h1 Admin Dashboard
+  %ul.tiles
+    %li
+      = link_to admin_instructors_url do
+        %h3 Instructors
+        %dfn #{InstructorProfile.all.size} Total
+    %li
+      = link_to admin_students_url do
+        %h3 Students
+        %dfn #{StudentProfile.all.size} Total
+    %li
+      = link_to admin_tracks_url do
+        %h3 Tracks
+        %dfn #{Track.active.size} Active
+    %li
+      = link_to admin_workshops_url do
+        %h3 Workshops
+        %dfn #{Workshop.active.size} Active
+    %li
+      = link_to admin_events_url do
+        %h3 Events
+        %dfn #{Event.upcoming.size} Upcoming

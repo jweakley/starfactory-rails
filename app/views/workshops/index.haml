@@ -3,4 +3,9 @@
   %ul.tiles
     - @workshops.each do |workshop|
       %li
-        %h3= link_to workshop.name, workshop
+        = link_to workshop do
+          %h3= workshop.name
+          - if workshop.events.current.any?
+            %time= workshop.events.current.first.starts_at.strftime '%b %e, %Y @ %l:%M %P'
+          - else
+            %dfn #{workshop.votes_to_go} votes to go

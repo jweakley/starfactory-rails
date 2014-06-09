@@ -4,23 +4,16 @@ class WorkshopsController < ApplicationController
   before_action :load_workshop, only: [:show, :edit, :update, :destroy]
   before_action :load_current_user_vote, only: [:show]
 
-  add_breadcrumb 'Workshops', :workshops_url
+  add_breadcrumb 'Tracks', :tracks_url
 
-  # GET /workshops
   def index
-    @page_title = 'Workshops'
-    if logged_in? && current_user.admin?
-      @workshops = Workshop.page params[:page]
-    else
-      @workshops = Workshop.active.page params[:page]
-    end
-    authorize @workshops
-    respond_with @workshops
+    redirect_to tracks_url
   end
 
   # GET /workshops/1
   def show
     @page_title = @workshop.name
+    add_breadcrumb @workshop.tracks.first.name, track_url(@workshop.tracks.first)
     add_breadcrumb @workshop.name
     authorize @workshop
     respond_with @workshop

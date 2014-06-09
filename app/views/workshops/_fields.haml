@@ -1,15 +1,18 @@
 .field
   = f.label :name
   = f.text_field :name
+.field
+  = f.label :description
+  = f.text_area :description
 %fieldset
   %legend Tracks
   = f.collection_check_boxes :track_ids, Track.active, :id, :name do |c|
     .field.checkbox
       = c.check_box
       = c.label
-.field
-  = f.label :description
-  = f.text_area :description
-.field
-  = f.label :status
-  = f.select :status, Workshop::VALID_STATUSES
+%fieldset
+  %legend Status
+  - Workshop::VALID_STATUSES.each_with_index do |status, s|
+    .field.radio
+      = f.radio_button :status, status, id: "workshop_status_#{s}", checked: status == f.object.status ? true : nil
+      = f.label :status, status, for: "workshop_status_#{s}"

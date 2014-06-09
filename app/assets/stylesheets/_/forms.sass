@@ -27,6 +27,8 @@ input[type="submit"]
             color: #F9598D
     &.icon
         padding-right: 50px
+        &:before
+            display: none
         &:after
             line-height: 50px
             position: absolute
@@ -78,6 +80,7 @@ article form
     select
         width: auto
 
+    .field.radio,
     .field.checkbox
         margin: .5em 0
         overflow: hidden
@@ -91,7 +94,6 @@ article form
                 background: #3B3D42
                 +border_radius(3px)
                 color: #2E3035
-                content: '\f00c'
                 display: inline-block
                 font-size: 1.2em
                 height: 1.6em
@@ -106,9 +108,15 @@ article form
         input:focus ~ label:before,
         &:hover label:before
             background: lighten(#3B3D42, 5%)
+    .field.radio label:before
+        content: '\f111'
+    .field.checkbox label:before
+        content: '\f00c'
 
-    fieldset .field.checkbox
-        margin: 0
+    fieldset
+        .field.radio,
+        .field.checkbox
+            margin: 0
 
     .field ~ .field,
     .field ~ fieldset
