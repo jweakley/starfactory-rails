@@ -5,7 +5,7 @@
   %dl
     - if @event.workshop.track.present?
       %dt Track
-      %dd= link_to workshop.track_name, workshop.track
+      %dd= link_to @event.workshop_track_name, @event.workshop.track
     - if @event.instructor_profiles.any?
       %dt Instructor
       %dd

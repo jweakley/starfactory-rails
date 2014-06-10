@@ -27,4 +27,5 @@ class Event < ActiveRecord::Base
 
   delegate :name, to: :workshop, prefix: true
   delegate :description, to: :workshop, prefix: true
+  delegate :track_name, to: :workshop, prefix: true
 end
