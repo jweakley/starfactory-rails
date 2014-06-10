@@ -11,11 +11,11 @@
 #
 
 class Track < ActiveRecord::Base
-  has_many :tracks_workshops
-  has_many :workshops, through: :tracks_workshops
+  has_many :workshops
 
   VALID_STATUSES = %w(Active Disabled)
+  DEFAULT_SORT_COLUMN = 'name'
 
   scope :active, -> { where { status.eq 'Active' } }
-  scope :by_name, order(name: :asc)
+  scope :by_name, -> { order('name asc') }
 end

@@ -7,7 +7,7 @@ module Studentable
     accepts_nested_attributes_for :student_profile
   end
 
-  def instructor?
+  def student?
     !student_profile.nil?
   end
 end

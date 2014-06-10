@@ -1,8 +1,7 @@
-%section
-  .wrapper
-    %h1 Forbidden
-    %p
-      Looks like you don't have permission to do that.
-      - unless logged_in?
-        Usually this just means you forgot to
-        #{link_to 'login', login_url}.
+%section.textual
+  %h1 Forbidden
+  %p
+    Looks like you don't have permission to do that.
+    - unless logged_in?
+      Usually this just means you forgot to
+      #{link_to 'login', login_url}.

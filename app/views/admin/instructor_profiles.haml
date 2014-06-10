@@ -3,8 +3,8 @@
   %table
     %thead
       %tr
-        %th Name
-        %th Email
+        %th= sort_link 'Name', 'instructor_profiles.name'
+        %th= sort_link 'Email', 'users.email'
         %th Current Workshops
         %th
     - if @instructor_profiles.total_pages > 1

@@ -13,6 +13,8 @@ class AdminProfile < ActiveRecord::Base
   belongs_to :user, inverse_of: :admin_profile
   delegate :email, to: :user, allow_nil: true
 
+  DEFAULT_SORT_COLUMN = 'admin_profiles.name'
+
   accepts_nested_attributes_for :user
 
   validates :name, presence: true

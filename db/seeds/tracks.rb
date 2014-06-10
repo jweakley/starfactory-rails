@@ -1,7 +1,7 @@
 def add_workshop(track, name)
   FactoryGirl.create(:workshop,
     name: name,
-    tracks: [track]
+    track_id: track.id
   )
 end
 

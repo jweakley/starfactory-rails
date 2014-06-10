@@ -7,35 +7,58 @@ class AdminController < ApplicationController
 
   def events
     add_breadcrumb 'Events'
-    @events = Event.by_soonest.page params[:page]
+    @events = Event
+      .joins(:workshop)
+      .order("#{sort_column} #{sort_direction}")
+      .page params[:page]
     authorize @events
     respond_with @events
   end
 
-  def instructors
+  def instructor_profiles
     add_breadcrumb 'Instructors'
-    @instructor_profiles = InstructorProfile.by_name.page params[:page]
+    @instructor_profiles = InstructorProfile
+      .joins(:user)
+      .order("#{sort_column} #{sort_direction}")
+      .page params[:page]
     authorize @instructor_profiles
     respond_with @instructor_profiles
   end
 
-  def students
+  def student_profiles
     add_breadcrumb 'Students'
-    @student_profiles = StudentProfile.by_name.page params[:page]
+    @student_profiles = StudentProfile
+      .joins(:user)
+      .order("#{sort_column} #{sort_direction}")
+      .page params[:page]
     authorize @student_profiles
     respond_with @student_profiles
   end
 
   def tracks
     add_breadcrumb 'Tracks'
-    @tracks = Track.by_name.page params[:page]
+    @tracks = Track
+      .order("#{sort_column} #{sort_direction}")
+      .page params[:page]
     authorize @tracks
     respond_with @tracks
   end
 
+  def users
+    add_breadcrumb 'Users'
+    @users = User
+      .order("#{sort_column} #{sort_direction}")
+      .page params[:page]
+    authorize @users
+    respond_with @users
+  end
+
   def workshops
     add_breadcrumb 'Workshops'
-    @workshops = Workshop.by_name.page params[:page]
+    @workshops = Workshop
+      .joins(:track)
+      .order("#{sort_column} #{sort_direction}")
+      .page params[:page]
     authorize @workshops
     respond_with @workshops
   end

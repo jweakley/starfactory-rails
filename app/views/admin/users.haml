@@ -1,0 +1,21 @@
+%section.textual
+  %h1 Users
+  %table
+    %thead
+      %tr
+        %th Name
+        %th= sort_link 'Email', 'users.email'
+        %th Type
+        %th
+    - if @users.total_pages > 1
+      %tfoot
+        %td{ colspan: 4 }= paginate @users
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= user.name
+          %td= link_to user.email, "mailto:#{user.email}"
+          %td= user.kind
+          %td.actions
+            %div
+              = link_to 'Edit', edit_user_url(user), class: 'edit'

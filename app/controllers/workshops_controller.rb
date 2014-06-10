@@ -13,7 +13,7 @@ class WorkshopsController < ApplicationController
   # GET /workshops/1
   def show
     @page_title = @workshop.name
-    add_breadcrumb @workshop.tracks.first.name, track_url(@workshop.tracks.first)
+    add_breadcrumb @workshop.track_name, track_url(@workshop.track)
     add_breadcrumb @workshop.name
     authorize @workshop
     respond_with @workshop

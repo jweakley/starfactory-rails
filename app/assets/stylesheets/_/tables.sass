@@ -7,13 +7,39 @@ thead th
     color: #000
     font-size: 1.2em
     font-weight: $heavy
-    padding: .8em
+    padding: .8em 1.2em
+    position: relative
+    +select(none)
     &:first-child,
     &:first-of-type
         +border_radius(3px, 0, 0, 3px)
     &:last-child,
     &:last-of-type
         +border_radius(0, 3px, 3px, 0)
+    a
+        color: #000
+        font-weight: $heavy
+        text-decoration: none
+        &:hover,
+        &:focus
+            color: #000
+            text-decoration: underline
+    a:before
+        +border_radius(1em)
+        color: #358476
+        content: '\f096'
+        font-size: .8em
+        left: .4em
+        line-height: 1.2em
+        position: absolute
+        text-align: center !important
+        top: 1.2em
+    a.active:before
+        color: #000
+    a.active.asc:before
+        content: '\f150'
+    a.active.desc:before
+        content: '\f151'
 
 tfoot td
     background: #17181A
@@ -38,7 +64,7 @@ tfoot td
 
 tbody
     td, th
-        padding: 1em
+        padding: 1em 1.5em
         +transition(background .2s linear)
         &:first-child,
         &:first-of-type

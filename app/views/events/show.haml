@@ -3,12 +3,10 @@
   = text_to_html @event.workshop_description
 
   %dl
-    - if @event.workshop.tracks.any?
+    - if @event.workshop.track.present?
       %dt Track
-      %dd
-        - @event.workshop.tracks.each do |track|
-          = link_to track.name, track
-    - if @event.workshop.tracks.any?
+      %dd= link_to workshop.track_name, workshop.track
+    - if @event.instructor_profiles.any?
       %dt Instructor
       %dd
         - @event.instructor_profiles.each do |instructor|

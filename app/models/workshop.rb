@@ -17,17 +17,19 @@
 class Workshop < ActiveRecord::Base
   include Votable
 
-  has_many :tracks_workshops
-  has_many :tracks, through: :tracks_workshops
+  belongs_to :track
   has_many :events
 
   VALID_STATUSES = %w(Active Disabled)
+  DEFAULT_SORT_COLUMN = 'tracks.name'
 
   scope :active, -> { where { status.eq 'Active' } }
-  scope :by_name, order(name: :asc)
-  scope :voted, includes(:events)
+  scope :by_name, -> { order('name asc') }
+  scope :voted, -> {
+    includes(:events)
     .where( events: { id: nil })
     .order('votes_count desc')
-    # Using a hash like below triggers and ActiveRecord bug when using LIMIT
-    # .order(votes_count: :desc)
+  }
+
+  delegate :name, to: :track, prefix: true
 end

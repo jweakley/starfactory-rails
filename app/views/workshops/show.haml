@@ -3,11 +3,12 @@
   = text_to_html @workshop.description
 
   %dl
-    - if @workshop.tracks.any?
-      %dt Track
-      %dd
-        - @workshop.tracks.each do |track|
-          = link_to track.name, track
+    %dt Track
+    %dd
+      - if @workshop.track.present?
+        = link_to @workshop.track_name, @workshop.track
+      - else
+        &mdash;
 
 %aside.textual
   - if @workshop.events.current.any?

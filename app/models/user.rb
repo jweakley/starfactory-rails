@@ -26,6 +26,8 @@ class User < ActiveRecord::Base
 
   has_many :votes
 
+  DEFAULT_SORT_COLUMN = 'users.email'
+
   include Adminable, Instructorable, Studentable
 
   def voted_on(resource)
@@ -35,6 +37,32 @@ class User < ActiveRecord::Base
       self.votes.where{ workshop_id.eq resource_id }.any?
     else
       false
+    end
+  end
+
+  def name
+    case
+    when admin?
+      admin_profile.name
+    when instructor?
+      instructor_profile.name
+    when student?
+      student_profile.name
+    else
+      ''
+    end
+  end
+
+  def kind
+    case
+    when admin?
+      'Admin'
+    when instructor?
+      'Instructor'
+    when student?
+      'Student'
+    else
+      ''
     end
   end
 end

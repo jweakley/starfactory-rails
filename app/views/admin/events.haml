@@ -5,10 +5,10 @@
   %table
     %thead
       %tr
-        %th Workshop
-        %th Start
-        %th End
-        %th Status
+        %th= sort_link 'Workshop', 'workshops.name'
+        %th= sort_link 'Start', 'events.starts_at'
+        %th= sort_link 'End', 'events.ends_at'
+        %th= sort_link 'Status', 'events.status'
         %th
     - if @events.total_pages > 1
       %tfoot

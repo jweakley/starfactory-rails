@@ -5,11 +5,11 @@
   %table
     %thead
       %tr
-        %th Name
-        %th Track
-        %th Votes
+        %th= sort_link 'Track', 'tracks.name'
+        %th= sort_link 'Name', 'workshops.name'
+        %th= sort_link 'Votes', 'workshops.votes_count'
         %th Scheduled
-        %th Status
+        %th= sort_link 'Status', 'workshops.status'
         %th
     - if @workshops.total_pages > 1
       %tfoot
@@ -17,13 +17,12 @@
     %tbody
       - @workshops.each do |workshop|
         %tr
-          %td= link_to workshop.name, edit_workshop_url(workshop)
           %td
-            - if workshop.tracks.any?
-              - workshop.tracks.each do |track|
-                = link_to track.name, track
+            - if workshop.track.present?
+              = workshop.track_name
             - else
               &mdash;
+          %td= link_to workshop.name, edit_workshop_url(workshop)
           %td
             .progress
               - percent = workshop.votes.count.to_d / workshop.votes_goal.to_d * 100

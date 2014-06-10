@@ -20,9 +20,10 @@ Starfactory::Application.routes.draw do
   scope :admin do
     get '' => 'admin#index', as: 'admin'
     get 'events' => 'admin#events', as: 'admin_events'
-    get 'instructors' => 'admin#instructors', as: 'admin_instructors'
+    get 'instructors' => 'admin#instructor_profiles', as: 'admin_instructors'
+    get 'users' => 'admin#users', as: 'admin_users'
     get 'tracks' => 'admin#tracks', as: 'admin_tracks'
-    get 'students' => 'admin#students', as: 'admin_students'
+    get 'students' => 'admin#student_profiles', as: 'admin_students'
     get 'workshops' => 'admin#workshops', as: 'admin_workshops'
   end
 

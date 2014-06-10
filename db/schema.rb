@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140524012747) do
+ActiveRecord::Schema.define(version: 20140610165240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,15 +83,6 @@ ActiveRecord::Schema.define(version: 20140524012747) do
     t.datetime "updated_at"
   end
 
-  create_table "tracks_workshops", force: true do |t|
-    t.integer  "track_id"
-    t.integer  "workshop_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "tracks_workshops", ["track_id", "workshop_id"], name: "rel_tracks_workshops", unique: true, using: :btree
-
   create_table "users", force: true do |t|
     t.string   "email",                                       null: false
     t.string   "crypted_password",                            null: false
@@ -134,6 +125,9 @@ ActiveRecord::Schema.define(version: 20140524012747) do
     t.datetime "updated_at"
     t.integer  "votes_count", default: 0
     t.integer  "votes_goal",  default: 0
+    t.integer  "track_id"
   end
+
+  add_index "workshops", ["track_id"], name: "index_workshops_on_track_id", using: :btree
 
 end

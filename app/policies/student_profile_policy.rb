@@ -50,7 +50,7 @@ class StudentProfilePolicy < Struct.new(:user, :student_profile)
   end
 
   # Used by the admin controller
-  def students?
+  def student_profiles?
     !!user && user.admin?
   end
 end

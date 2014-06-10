@@ -13,12 +13,15 @@
 
 class StudentProfile < ActiveRecord::Base
   belongs_to :user, inverse_of: :student_profile
-  delegate :email, to: :user, allow_nil: true
+
+  DEFAULT_SORT_COLUMN = 'student_profiles.name'
 
   accepts_nested_attributes_for :user
 
-  scope :by_name, order(name: :asc)
+  scope :by_name, -> { order('name asc') }
 
   validates :name, presence: true
   validates :user, presence: true
+
+  delegate :email, to: :user, allow_nil: true
 end

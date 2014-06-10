@@ -25,4 +25,29 @@ module ApplicationHelper
     options[:onerror] = "this.src='#{image_url src+'.png'}';this.onerror=null;"
     image_tag "#{src}.svg", options
   end
+
+  def sort_link(text, column, resource=nil, anchor=nil)
+    # Is this the default column?
+    if !resource
+      if controller_name == 'admin'
+        resource = action_name.classify.constantize 
+      else
+        resource = controller_name.classify.constantize
+      end
+    end
+    default_column = defined?(resource::DEFAULT_SORT_COLUMN) ? resource::DEFAULT_SORT_COLUMN : 'name'
+    if !params[:sort] && (column == default_column || column == 'id')
+      direction = 'desc'
+      active = 'active'
+    # Which way are we sorting?
+    else
+      direction = params[:direction] == 'asc' ? 'desc' : 'asc'
+      active = params[:sort] == column ? 'active' : ''
+    end
+    # Build the link
+    q = Rack::Utils.parse_nested_query(request.query_string)
+    q['sort'] = column
+    q['direction'] = direction
+    link_to text, "?#{q.to_query}#{anchor ? '#' + anchor : ''}", class: "#{direction} #{active}"
+  end
 end

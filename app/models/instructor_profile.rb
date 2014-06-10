@@ -16,12 +16,14 @@ class InstructorProfile < ActiveRecord::Base
   has_many :instructor_profiles_events
   has_many :events, through: :instructor_profiles_events
 
-  delegate :email, to: :user, allow_nil: true
+  DEFAULT_SORT_COLUMN = 'instructor_profiles.name'
 
   accepts_nested_attributes_for :user
 
-  scope :by_name, order(name: :asc)
+  scope :by_name, -> { order('name asc') }
 
   validates :name, presence: true
   validates :user, presence: true
+
+  delegate :email, to: :user, allow_nil: true
 end

@@ -2,6 +2,10 @@
   %h1 Admin Dashboard
   %ul.tiles
     %li
+      = link_to admin_users_url do
+        %h3 Users
+        %dfn #{User.all.size} Total
+    %li
       = link_to admin_instructors_url do
         %h3 Instructors
         %dfn #{InstructorProfile.all.size} Total
