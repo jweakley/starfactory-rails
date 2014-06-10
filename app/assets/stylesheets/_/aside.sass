@@ -38,6 +38,28 @@ article aside
                 +box_shadow(0 0 35px rgba(#000,.3))
                 padding: 0 0 0 6px
 
+article aside time.big
+    color: #fff
+    display: block
+    height: 180px
+    margin: 0 auto
+    max-width: 290px
+    text-align: center
+    .monthday
+        background: $colorAccent2
+        +border_radius(3px, 3px, 0, 0)
+        display: block
+        font-size: 3em
+        font-weight: $light
+        line-height: 130px
+    .hourspan
+        background: $colorAccent2Darker
+        +border_radius(0, 0, 3px, 3px)
+        display: block
+        font-size: 1.2em
+        font-weight: $heavy
+        line-height: 50px
+
 @media screen and (min-width: 1024px)
     article aside
         margin-right: -360px

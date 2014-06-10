@@ -1,6 +1,7 @@
 %section.textual
   %h1 Events
-  = link_to 'New', new_event_url, class: 'btn secondary icon new'
+  %nav
+    = link_to 'New', new_event_url, class: 'btn secondary icon new'
   %table
     %thead
       %tr
@@ -25,5 +26,4 @@
           %td= event.status
           %td.actions
             %div
-              = link_to 'View', event, class: 'view'
               = link_to 'Edit', edit_event_url(event), class: 'edit'

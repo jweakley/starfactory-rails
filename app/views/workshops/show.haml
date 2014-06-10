@@ -8,11 +8,6 @@
       %dd
         - @workshop.tracks.each do |track|
           = link_to track.name, track
-    - if @workshop.events.any?
-      %dt Scheduled
-      %dd
-        - @workshop.events.current.each do |event|
-          = link_to event.starts_at.strftime('%b %e, %Y @ %l:%M %P'), event
 
 %aside.textual
   - if @workshop.events.current.any?

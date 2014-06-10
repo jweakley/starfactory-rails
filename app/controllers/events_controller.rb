@@ -8,17 +8,39 @@ class EventsController < ApplicationController
   # GET /events
   def index
     @page_title = 'Events'
-    @events = Event.current.by_soonest.page params[:page]
+
+    if params[:year] && params[:month]
+      year = params[:year].to_i
+      month = params[:month].to_i
+      @month = Time.parse("#{year}-#{month}-1").beginning_of_month
+      add_breadcrumb @month.strftime('%B %Y')
+    else
+      @month = Time.now.beginning_of_month
+    end
+
+    month_start = @month.beginning_of_month
+    month_end = @month.end_of_month
+    @events = Event.active.where {
+      ((starts_at.gte month_start) & (starts_at.lte month_end)) |
+      ((ends_at.gte month_start) & (ends_at.lte month_end))
+    }
     authorize @events
+
+    @events_by_day = {}
+    (1..@month.end_of_month.day).each{|d| @events_by_day[d] = [] }
+    @events.each do |event|
+      @events_by_day[event.starts_at.day].push event
+    end
+
     respond_with @events
   end
 
   # GET /events/1
   def show
-    @page_title = @event.name
-    add_breadcrumb @event.name
+    @page_title = @event.workshop_name
+    add_breadcrumb @event.workshop_name
     authorize @event
-    respond_with @event
+    respond_with @events
   end
 
   # GET /events/new

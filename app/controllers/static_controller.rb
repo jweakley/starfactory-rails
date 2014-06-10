@@ -8,6 +8,14 @@ class StaticController < ApplicationController
     add_breadcrumb 'Contact'
   end
 
+  def privacy
+    add_breadcrumb 'Privacy Policy'
+  end
+
+  def terms
+    add_breadcrumb 'Terms of Service'
+  end
+
   def status403
     add_breadcrumb 'Status 403'
   end

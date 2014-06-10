@@ -1,0 +1,33 @@
+%section.textual.workshop
+  %h1= @event.workshop_name
+  = text_to_html @event.workshop_description
+
+  %dl
+    - if @event.workshop.tracks.any?
+      %dt Track
+      %dd
+        - @event.workshop.tracks.each do |track|
+          = link_to track.name, track
+    - if @event.workshop.tracks.any?
+      %dt Instructor
+      %dd
+        - @event.instructor_profiles.each do |instructor|
+          = link_to instructor.name, instructor
+
+%aside.textual
+  %time.big
+    .monthday= @event.starts_at.strftime '%b %e'
+    .hourspan
+      = @event.starts_at.strftime '%l:%M%P'
+      &mdash;
+      = @event.ends_at.strftime '%l:%M%P'
+  .progress
+    - percent = 50
+    .bar{ style: "width: #{percent < 100 ? percent : 100}%" }
+      5
+  %p
+    This only has #{pluralize 5, 'spot', 'spots'}
+    left. Register now to save your spot.
+  %p= link_to 'Register', '#signup', class: 'btn'
+  %hr
+  = render 'shared/about'

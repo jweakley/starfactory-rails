@@ -6,7 +6,6 @@
     = stylesheet_link_tag '//fonts.googleapis.com/css?family=Raleway:100,300,600'
     = stylesheet_link_tag '//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'
     = stylesheet_link_tag 'application', media: :all
-    = stylesheet_link_tag 'admin', media: :all if params[:controller] == 'admin'
     = yield :header
     = favicon_link_tag asset_path('favicon.png')
     = csrf_meta_tags
@@ -18,10 +17,10 @@
           = svg_image 'starfactory-logo', alt: 'Starfactory'
         %nav
           = link_to 'Admin', admin_url if logged_in? && current_user.admin?
+          = link_to 'Calendar', events_url
           = link_to 'Workshops', tracks_url
           - unless logged_in?
             = link_to 'Students', login_url
-          = link_to 'Contact', contact_url
           - if logged_in?
             = link_to 'Logout', logout_url
 
@@ -38,9 +37,14 @@
 
       %footer
         .wrapper
+          %nav
+            = link_to 'Contact', contact_url
+            &middot;
+            = link_to 'Privacy', privacy_url
+            &middot;
+            = link_to 'Terms', terms_url
           .legal
-            Copyright &copy; #{Time.now.year}
-            = link_to 'dw2', 'http://dougwaltman.com'
+            Starfactory is Copyright &copy; #{Time.now.year}, Douglas Waltman II
 
     = javascript_include_tag 'application'
     = yield :footer

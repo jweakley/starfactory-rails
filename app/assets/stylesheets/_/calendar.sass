@@ -1,0 +1,132 @@
+$dayWidth: 14.28%
+
+section.calendar
+    background: #2E3035
+    +border_radius(3px)
+    overflow: hidden
+    margin: 1em 0
+    +select(none)
+    text-align: left
+
+    .labels
+        background: #2E3035
+        +border_radius(3px)
+        +box_shadow(0 10px 10px rgba(#000,.1))
+        position: relative
+        font-size: 0
+        z-index: 3
+        mark
+            +box_sizing(border-box)
+            display: inline-block
+            font-size: $baseFontSize * .9
+            font-weight: $heavy
+            line-height: 2em
+            padding: 0 .5em
+            text-align: right
+            vertical-align: top
+            width: $dayWidth
+
+    .days
+        font-size: 0
+    &.offset0 .days
+        text-indent: 0
+        .day:nth-child(7n + 6),
+        .day:nth-child(7n + 7)
+            background: #3B3D42
+    &.offset1 .days
+        text-indent: $dayWidth
+        .day:nth-child(7n + 5),
+        .day:nth-child(7n + 6)
+            background: #3B3D42
+    &.offset2 .days
+        text-indent: $dayWidth * 2
+        .day:nth-child(7n + 4),
+        .day:nth-child(7n + 5)
+            background: #3B3D42
+    &.offset3 .days
+        text-indent: $dayWidth * 3
+        .day:nth-child(7n + 3),
+        .day:nth-child(7n + 4)
+            background: #3B3D42
+    &.offset4 .days
+        text-indent: $dayWidth * 4
+        .day:nth-child(7n + 2),
+        .day:nth-child(7n + 3)
+            background: #3B3D42
+    &.offset5 .days
+        text-indent: $dayWidth * 5
+        .day:nth-child(7n + 1),
+        .day:nth-child(7n + 2)
+            background: #3B3D42
+    &.offset6 .days
+        text-indent: $dayWidth * 6
+        .day:nth-child(7n + 1),
+        .day:nth-child(7n + 7)
+            background: #3B3D42
+
+    .day
+        background: #404247
+        +border_radius(3px)
+        border: 1px solid #2E3035
+        +box_sizing(border-box)
+        display: inline-block
+        font-size: $baseFontSize
+        height: 8.5em
+        padding: 2em .25em 0
+        position: relative
+        +transition(box-shadow .2s linear)
+        vertical-align: top
+        width: $dayWidth
+        z-index: 1
+        mark
+            color: #90939b
+            font-size: .9em
+            position: absolute
+            right: .5em
+            top: .5em
+        &:hover
+            +box_shadow(0 0 10px rgba(#000,.2))
+            z-index: 3
+            mark
+                color: #b8babf
+
+    .day.today
+        background: #4B474E !important
+        z-index: 2
+        &:before
+            background: $colorAccentDarker
+            +border_radius(3px)
+            content: ''
+            height: 3px
+            left: 0
+            position: absolute
+            right: 0
+            top: 0
+        mark
+            color: $colorAccentDarker
+            font-weight: $heavy
+        &:hover mark
+            color: $colorAccent
+
+    .events
+        li
+        li ~ li
+            margin-top: .25em
+        a
+            background: $colorAccent2Darker
+            +border_radius(3px)
+            +box_sizing(border-box)
+            color: #000
+            display: block
+            font-size: .9em
+            line-height: 1.5em
+            overflow: hidden
+            padding: 0 .25em
+            text-decoration: none
+            white-space: nowrap
+            max-width: 100%
+            time
+                font-weight: $heavy
+            &:hover,
+            &:focus
+                background: $colorAccent2

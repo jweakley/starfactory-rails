@@ -3,7 +3,7 @@
     .monthday= event.starts_at.strftime '%b %e'
     .weektime= event.starts_at.strftime '%A, %l%P'
   .about
-    %h3= link_to event.workshop_name, event.workshop
+    %h3= link_to event.workshop_name, event
     - if event.instructor_profiles.any?
       %dfn
         Led by

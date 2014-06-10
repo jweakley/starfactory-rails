@@ -11,6 +11,7 @@ Starfactory::Application.routes.draw do
   resources :users
   resources :sessions
   resources :events
+  get 'events/:year/:month' => 'events#index', as: 'events_month'
   resources :instructor_profiles, path: 'instructors'
   resources :student_profiles, path: 'students'
   resources :tracks
@@ -26,6 +27,8 @@ Starfactory::Application.routes.draw do
   end
 
   get 'contact' => 'static#contact', as: 'contact'
+  get 'privacy' => 'static#privacy', as: 'privacy'
+  get 'terms' => 'static#terms', as: 'terms'
 
   get '403' => 'static#status403', as: 'status_403'
   get '404' => 'static#status404', as: 'status_404'

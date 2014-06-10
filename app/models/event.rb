@@ -25,4 +25,5 @@ class Event < ActiveRecord::Base
   scope :by_soonest, order(starts_at: :asc)
 
   delegate :name, to: :workshop, prefix: true
+  delegate :description, to: :workshop, prefix: true
 end
