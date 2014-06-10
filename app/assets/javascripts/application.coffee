@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.datepicker
 //= require skylite.min
 
 jQuery.ajaxSetup
@@ -63,3 +64,13 @@ jQuery(document).ready ($) ->
             e.preventDefault()
             return false
     $('html').click -> $menu.removeClass 'open'
+
+    # DatePicker
+    $('.field.datetime .day').datepicker
+        button: 'Derp'
+        showOn: 'button'
+        dateFormat: 'yy-mm-dd'
+        minDate: new Date(new Date().getTime() + 86400000)
+    $('.field.datetime .day').change ->
+        $(@).closest('.datetime')
+            .attr 'data-val', "#{$(@).val()} @ #{$(@).siblings('select').val()}"

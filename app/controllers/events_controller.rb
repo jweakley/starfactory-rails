@@ -53,7 +53,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    add_breadcrumb @event.name, event_url(@event)
+    add_breadcrumb @event.workshop_name, event_url(@event)
     add_breadcrumb 'Edit'
     authorize @event
     respond_with @event
@@ -86,7 +86,7 @@ private
 
   def event_params
     params.require(:event).permit(
-      *policy(@event || event).permitted_attributes
+      *policy(@event || Event).permitted_attributes
     )
   end
 end

@@ -1,0 +1,118 @@
+form .field.datetime
+    overflow: hidden
+    position: relative
+    input
+        bottom: 200%
+        position: absolute
+    button
+        background: $colorAccent2Darker
+        color: #000
+        height: 2em
+        line-height: 2em
+        margin: 0 .5em 0 0
+        padding: 0
+        text-align: left
+        text-indent: -999em
+        width: 2em
+        &:before
+            content: '\f073'
+            left: 0
+            position: absolute
+            right: 0
+            text-align: center
+            top: 0
+        &:hover,
+        &:focus
+            background: $colorAccent2
+    select
+        display: inline-block
+    &[data-val]:after
+        background: rgba(#000,.2)
+        +border_radius(1em)
+        color: $colorAccent2Darker
+        content: attr(data-val)
+        display: inline-block
+        font-family: $primary
+        font-size: .8em
+        font-weight: $heavy
+        margin: 0 .5em
+        padding: .25em .75em
+
+.ui-datepicker
+    background: #EBEDF0
+    +border_radius(3px)
+    +box_shadow(0 0 3em rgba(#000,.2))
+    padding: 1em
+    text-align: left
+    z-index: 5 !important
+    .ui-datepicker-title
+        color: #2F3035
+        line-height: 1em
+        text-align: center
+        span
+            font-size: 1.2em
+    .ui-datepicker-next,
+    .ui-datepicker-prev
+        color: $colorAccent2Darker
+        line-height: 1em
+        padding: 1em
+        position: absolute
+        top: 0
+        &:hover
+            color: $colorAccent2
+    .ui-datepicker-next
+        right: 0
+    .ui-datepicker-prev
+        left: 0
+    table
+        margin: 10px 0 0
+    thead th
+        background: transparent
+        font-size: .8em
+        padding: .5em
+        text-align: right
+        span
+            color: #8a8e96
+            font-weight: $heavy
+    tbody td
+        background: #fff
+        border-bottom: 1px solid #404247
+        padding: 0
+        text-align: right
+        a,
+        &.ui-state-disabled span
+            +border_radius(2px)
+            display: block
+            margin: -1px 0 0
+            padding: .5em
+            position: relative
+            z-index: 2
+        a
+            color: $colorText
+        a:hover,
+        a:focus
+            background: $colorAccent
+            color: #fff
+            z-index: 3
+        &.ui-state-disabled
+            background: #fff
+            border-bottom-color: #fff
+            span
+                background: #fff
+                border-bottom-color: #fff
+                color: #999
+        &.ui-datepicker-other-month
+            background: darken(#24262A,3%)
+            span
+                background: transparent
+        &.ui-datepicker-today
+            background: $colorAccent2Darker
+            border-bottom-color: $colorAccent2Darker
+            a,
+            span
+                background: $colorAccent2Darker
+                color: #fff
+                z-index: 4
+    tbody tr:last-child td,
+    tbody tr:last-of-type td
+        border-bottom: 0

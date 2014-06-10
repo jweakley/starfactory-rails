@@ -28,4 +28,36 @@ class Event < ActiveRecord::Base
   delegate :name, to: :workshop, prefix: true
   delegate :description, to: :workshop, prefix: true
   delegate :track_name, to: :workshop, prefix: true
+
+  def starts_at_day
+    starts_at.present? ? starts_at.strftime('%Y-%m-%d') : ''
+  end
+
+  def starts_at_day=(val)
+    self.starts_at = DateTime.parse "#{val} #{starts_at_time}"
+  end
+
+  def starts_at_time
+    starts_at.present? ? starts_at.strftime('%H:%M') : ''
+  end
+
+  def starts_at_time=(val)
+    self.starts_at = DateTime.parse "#{starts_at_day} #{val}"
+  end
+
+  def ends_at_day
+    ends_at.present? ? ends_at.strftime('%Y-%m-%d') : ''
+  end
+
+  def ends_at_day=(val)
+    self.ends_at = DateTime.parse "#{val} #{ends_at_time}"
+  end
+
+  def ends_at_time
+    ends_at.present? ? ends_at.strftime('%H:%M') : ''
+  end
+
+  def ends_at_time=(val)
+    self.ends_at = DateTime.parse "#{ends_at_day} #{val}"
+  end
 end

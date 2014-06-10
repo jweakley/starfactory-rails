@@ -1,0 +1,19 @@
+.field
+  = f.label :workshop_id
+  = f.select :workshop_id, Workshop.active.map{|w| [w.name, w.id]}, include_blank: true
+.field.datetime{ data: { val: f.object.starts_at.present? ? f.object.starts_at.strftime('%Y-%m-%d @ %H:%M') : nil } }
+  %label Start
+  %br
+  = f.text_field :starts_at_day, class: 'day'
+  = f.select :starts_at_time, (0..95).map{|n| (Time.now.beginning_of_day + (n * 15).minutes).strftime('%H:%M') }
+.field.datetime{ data: { val: f.object.ends_at.present? ? f.object.ends_at.strftime('%Y-%m-%d @ %H:%M') : nil } }
+  %label End
+  %br
+  = f.text_field :ends_at_day, class: 'day'
+  = f.select :ends_at_time, (0..95).map{|n| (Time.now.beginning_of_day + (n * 15).minutes).strftime('%H:%M') }
+%fieldset
+  %legend Status
+  - Event::VALID_STATUSES.each_with_index do |status, s|
+    .field.radio
+      = f.radio_button :status, status, id: "event_status_#{s}", checked: status == f.object.status ? true : nil
+      = f.label :status, status, for: "event_status_#{s}"

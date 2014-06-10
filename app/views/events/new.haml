@@ -1,0 +1,6 @@
+%section.textual
+  %h1 New Event
+  = form_for @event do |f|
+    = render 'fields', f: f
+    .actions
+      = button_tag 'Submit'
