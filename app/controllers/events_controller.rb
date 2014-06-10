@@ -48,6 +48,7 @@ class EventsController < ApplicationController
     @event = policy_scope(Event).new
     add_breadcrumb 'New'
     authorize @event
+    @event.workshop_id = params[:workshop].to_i
     respond_with @event
   end
 

@@ -40,4 +40,5 @@
           %td.actions
             %div
               = link_to 'View', workshop, class: 'view'
+              = link_to 'Schedule', new_event_url(workshop: workshop), class: 'schedule'
               = link_to 'Edit', edit_workshop_url(workshop), class: 'edit'
