@@ -17,8 +17,9 @@
           = svg_image 'starfactory-logo', alt: 'Starfactory'
         %nav
           = link_to 'Admin', admin_url if logged_in? && current_user.admin?
-          = link_to 'Calendar', events_url
           = link_to 'Workshops', tracks_url
+          = link_to 'Calendar', events_url
+          = link_to 'Instructors', instructor_profiles_url
           - unless logged_in?
             = link_to 'Students', login_url
           - if logged_in?
