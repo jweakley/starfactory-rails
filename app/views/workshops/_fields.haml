@@ -5,11 +5,11 @@
   = f.label :description
   = f.text_area :description
 %fieldset
-  %legend Tracks
-  = f.collection_check_boxes :track_ids, Track.active, :id, :name do |c|
-    .field.checkbox
-      = c.check_box
-      = c.label
+  %legend Track
+  - Track.all.each_with_index do |track, t|
+    .field.radio
+      = f.radio_button :track_id, track.id, id: "workshop_track_id_#{t}", checked: track.id == f.object.track_id ? true : nil
+      = f.label :track_id, track.name, for: "workshop_track_id_#{t}"
 %fieldset
   %legend Status
   - Workshop::VALID_STATUSES.each_with_index do |status, s|
