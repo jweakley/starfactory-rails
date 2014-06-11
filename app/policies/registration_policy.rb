@@ -1,10 +1,12 @@
-class EventPolicy < Struct.new(:user, :event)
+class RegistrationPolicy < Struct.new(:user, :registration)
   class Scope < Struct.new(:user, :scope)
     def resolve
       case
       when !user
         none
       when user.admin?
+        scope
+      when user.student?
         scope
       else
         none
@@ -15,28 +17,28 @@ class EventPolicy < Struct.new(:user, :event)
   def permitted_attributes
     case
     when user.admin?
-      [:starts_at, :starts_at_day, :starts_at_time, :ends_at, :ends_at_day,
-        :ends_at_time, :registrations_max, :cost_in_cents, :cost_in_dollars,
-        :workshop_id, :status, :instructor_profile_ids => []]
+      [:id, :event_id, :student_profile_id, :status, :amount_paid_in_cents]
+    when user.student?
+      [:id, :event_id, :student_profile_id]
     else
       []
     end
   end
 
   def index?
-    true
+    false
   end
 
   def show?
-    true
+    !!user && (user.admin? || user == registration.student_profile.user)
   end
 
   def create?
-    !!user && user.admin?
+    !!user
   end
 
   def new?
-    !!user && user.admin?
+    false
   end
 
   def update?
@@ -48,11 +50,11 @@ class EventPolicy < Struct.new(:user, :event)
   end
 
   def destroy?
-    false
+    !!user && (user.admin? || user == registration.student_profile.user)
   end
 
   # Used by the admin controller
-  def events?
+  def registrations?
     !!user && user.admin?
   end
 end

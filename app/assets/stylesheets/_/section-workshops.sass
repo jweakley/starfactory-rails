@@ -11,7 +11,7 @@ article section.workshops
 
         li
             background: #3B3D42
-            border-left: 5px solid
+            border-left: 5px solid #59404C
             +border_radius(3px)
             min-height: 3em
             position: relative
@@ -20,6 +20,7 @@ article section.workshops
             time
                 color: #90939b
                 position: absolute
+                +transition(color .2s linear)
                 width: 170px
                 .monthday,
                 .soon
@@ -54,18 +55,24 @@ article section.workshops
 
         li:hover,
         li.active
-            border-left-width: 10px
+            border-left: 10px solid $colorAccentDarker
+            time
+                color: #b8babf
 
         li ~ li
             border-top: 1px solid #2E3035
 
-        &.upcoming li
+        li.registered
             border-left-color: $colorAccentDarker
-            &:hover,
-            &:active
-                border-left-color: $colorAccent
-        &.voted li
-            border-left-color: #595C62
+            time
+                color: #b8babf
+                &:after
+                    color: $colorAccent2Darker
+                    content: '\f058  Yes'
+                    display: block
+                    font-size: .9em
+                    font-weight: $heavy
+                    margin: .1em 0 0
 
 @media screen and (min-width: 600px)
     article section.workshops .list li

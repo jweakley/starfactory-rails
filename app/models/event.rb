@@ -2,19 +2,24 @@
 #
 # Table name: events
 #
-#  id          :integer          not null, primary key
-#  status      :string(255)      default("Active")
-#  starts_at   :datetime
-#  ends_at     :datetime
-#  workshop_id :integer
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id                  :integer          not null, primary key
+#  status              :string(255)      default("Active")
+#  starts_at           :datetime
+#  ends_at             :datetime
+#  workshop_id         :integer
+#  created_at          :datetime
+#  updated_at          :datetime
+#  cost_in_cents       :integer          default(0)
+#  registrations_count :integer          default(0)
+#  registrations_max   :integer          default(0)
 #
 
 class Event < ActiveRecord::Base
   belongs_to :workshop
   has_many :instructor_profiles_events
   has_many :instructor_profiles, through: :instructor_profiles_events
+  has_many :registrations
+  has_many :student_profiles, through: :registrations
 
   VALID_STATUSES = %w(Active Disabled)
   DEFAULT_SORT_COLUMN = 'events.starts_at'
@@ -24,10 +29,39 @@ class Event < ActiveRecord::Base
   scope :current, -> { where { ends_at.gt Time.now } }
   scope :ongoing, -> { where { (starts_at.lteq Time.now) & (ends_at.gteq Time.now) } }
   scope :by_soonest, -> { order('starts_at asc') }
+  scope :registered, -> {
+    includes(:registrations)
+    .where( registrations: { id: nil })
+    .order('registrations_count desc')
+  }
 
   delegate :name, to: :workshop, prefix: true
   delegate :description, to: :workshop, prefix: true
   delegate :track_name, to: :workshop, prefix: true
+
+  def cost_in_dollars
+    cost_in_cents.to_d / 100.0
+  end
+
+  def cost_in_dollars=(val)
+    self.cost_in_cents = (val.to_d * 100).to_i
+  end
+
+  def formatted_cost
+    if cost_in_dollars <= 0
+      'Free'
+    elsif cost_in_dollars.to_i < cost_in_dollars
+      ActionController::Base.helpers.number_to_currency(
+        cost_in_dollars, precision: 2, locale: :en)
+    else
+      "$#{cost_in_dollars.to_i}"
+    end
+  end
+
+  def hours_long
+    ActionController::Base.helpers.pluralize(
+      ("%g" % ("%.2f" % ((ends_at - starts_at) / 3600))), 'hour', 'hours')
+  end
 
   def starts_at_day
     starts_at.present? ? starts_at.strftime('%Y-%m-%d') : ''

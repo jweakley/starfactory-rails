@@ -1,10 +1,16 @@
 table
     margin: 1em 0
     width: 100%
+    th,
+    td
+        &.alignr
+            text-align: right
+        &.alignc
+            text-align: center
 
 thead th
     background: $colorAccent2Darker
-    color: #000
+    color: #183e37
     font-size: 1.2em
     font-weight: $heavy
     padding: .8em 1.2em
@@ -123,6 +129,8 @@ tbody
                 content: '\f00d'
             &.edit:before
                 content: '\f040'
+            &.registrations:before
+                content: '\f0c0'
             &.schedule:before
                 content: '\f08d'
             &.view:before

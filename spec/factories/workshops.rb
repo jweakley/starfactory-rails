@@ -12,6 +12,7 @@
 #  updated_at  :datetime
 #  votes_count :integer          default(0)
 #  votes_goal  :integer          default(0)
+#  track_id    :integer
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

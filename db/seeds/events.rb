@@ -5,7 +5,9 @@ def add_event(workshop, starts_at, ends_at)
     workshop: workshop,
     starts_at: starts_at,
     ends_at: ends_at,
-    instructor_profiles: [@instructor_profile]
+    cost_in_cents: 15000,
+    instructor_profiles: [@instructor_profile],
+    registrations_max: 10
   )
 end
 

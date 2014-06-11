@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610165240) do
+ActiveRecord::Schema.define(version: 20140611042653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,12 +34,15 @@ ActiveRecord::Schema.define(version: 20140610165240) do
   end
 
   create_table "events", force: true do |t|
-    t.string   "status",      default: "Active"
+    t.string   "status",              default: "Active"
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.integer  "workshop_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "cost_in_cents",       default: 0
+    t.integer  "registrations_count", default: 0
+    t.integer  "registrations_max",   default: 0
   end
 
   add_index "events", ["workshop_id"], name: "index_events_on_workshop_id", using: :btree
@@ -63,6 +66,17 @@ ActiveRecord::Schema.define(version: 20140610165240) do
   end
 
   add_index "instructor_profiles_events", ["instructor_profile_id", "event_id"], name: "rel_instructor_profiles_events", unique: true, using: :btree
+
+  create_table "registrations", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "student_profile_id"
+    t.string   "status",               default: "Pending"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "amount_paid_in_cents", default: 0
+  end
+
+  add_index "registrations", ["event_id", "student_profile_id"], name: "index_registrations_on_event_id_and_student_profile_id", unique: true, using: :btree
 
   create_table "student_profiles", force: true do |t|
     t.string   "name"

@@ -2,7 +2,7 @@
 
 *:before,
 *:after
-    font-family: FontAwesome
+    font-family: FontAwesome, $primary
     font-weight: normal
     -webkit-font-smoothing: antialiased
     text-indent: 0 !important
@@ -26,6 +26,7 @@ body
 
 strong,
 strong *
+    color: $colorTextBold
     font-weight: $heavy
 
 em,
@@ -52,16 +53,17 @@ hr
 
 #flash
     +border_radius(3px)
-    color: $colorTextBold
     display: block
     font-size: $baseFontSize * 1.25
-    font-weight: $light
+    font-weight: $heavy
     margin: 0 0 2em
     padding: 1em
     &.notice
-        background: $colorAccent2Darker
+        background: #fff
+        color: $colorAccentDarker
     &.error
         background: $colorAccentDarker
+        color: $colorTextBold
 
 @media screen and (min-width: 1601px)
     body

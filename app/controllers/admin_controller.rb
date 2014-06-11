@@ -25,6 +25,21 @@ class AdminController < ApplicationController
     respond_with @instructor_profiles
   end
 
+  def registrations
+    @event = Event.find_by_id params[:event_id]
+    @registrations = Registration
+      .joins(:student_profile)
+      .joins(:event)
+      .where(event_id: @event.id)
+      .order("#{sort_column} #{sort_direction}")
+      .page params[:page]
+    authorize @registrations
+    add_breadcrumb 'Events', admin_events_url
+    add_breadcrumb @event.workshop_name, event_url(@event)
+    add_breadcrumb 'Registrations'
+    respond_with @registrations
+  end
+
   def student_profiles
     add_breadcrumb 'Students'
     @student_profiles = StudentProfile

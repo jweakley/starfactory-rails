@@ -1,4 +1,4 @@
-%li
+%li{ class: registered_for_event?(event) ? 'registered' : nil }
   %time
     .monthday= event.starts_at.strftime '%b %e'
     .weektime= event.starts_at.strftime '%A, %l%P'

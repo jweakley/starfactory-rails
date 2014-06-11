@@ -40,19 +40,25 @@ class WorkshopsController < ApplicationController
     @workshop = policy_scope(Workshop).new(workshop_params)
     authorize @workshop
     @workshop.save
-    respond_with @workshop, location: @workshop, error: 'Unable to add workshop.'
+    respond_with @workshop,
+      location: @workshop,
+      error: 'Unable to add workshop.'
   end
 
   # PATCH/PUT /workshops/1
   def update
     @workshop.update(workshop_params)
-    respond_with @workshop, location: @workshop, error: 'Unable to add workshop.'
+    respond_with @workshop,
+      location: @workshop,
+      error: 'Unable to update workshop.'
   end
 
   # DELETE /workshops/1
   def destroy
     @workshop.destroy
-    respond_with @workshop, location: @workshop, error: 'Unable to remove workshop.'
+    respond_with @workshop,
+      location: @workshop,
+      error: 'Unable to remove workshop.'
   end
 
 private

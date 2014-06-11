@@ -40,7 +40,7 @@ private
       sort_string = 'id'
     end
     # Try and detect if the sort is not a string (int, date, etc.)
-    if sort_string.match(/_at|number|count|id$/i)
+    if sort_string.match(/_at|number|count|amount|id$/i)
       sort_string
     else
       "LOWER(#{sort_string})"

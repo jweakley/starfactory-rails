@@ -13,6 +13,8 @@
 
 class StudentProfile < ActiveRecord::Base
   belongs_to :user, inverse_of: :student_profile
+  has_many :registrations
+  has_many :events, through: :registrations
 
   DEFAULT_SORT_COLUMN = 'student_profiles.name'
 

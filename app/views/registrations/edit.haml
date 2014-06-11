@@ -1,0 +1,20 @@
+%section.textual
+  %h1 Editing Registration
+  %dl
+    %dt Student
+    %dd= @registration.student_profile_name
+    %dt Workshop
+    %dd= @registration.event_workshop_name
+    %dt Start
+    %dd= @registration.event_starts_at.strftime '%b %e, %Y @ %l:%M %P'
+    %dt Length
+    %dd= @registration.event_hours_long
+  = form_for @registration do |f|
+    %fieldset
+      %legend Status
+      - Registration::VALID_STATUSES.each_with_index do |status, s|
+        .field.radio
+          = f.radio_button :status, status, id: "registration_status_#{s}", checked: status == f.object.status ? true : nil
+          = f.label :status, status, for: "registration_status_#{s}"
+    .actions
+      = button_tag 'Save'
