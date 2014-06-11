@@ -43,7 +43,6 @@
       = f.hidden_field :student_profile_id, value: current_user.student_profile_id
       = button_tag 'Register'
   - elsif !logged_in?
-    %h3= @event.formatted_cost
     %p= link_to 'Register', login_url, class: 'btn', data: { confirm: "Please login to register.", buttontext: 'Login' }
   %hr
   = render 'shared/about'
