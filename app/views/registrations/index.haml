@@ -1,0 +1,31 @@
+%section.textual
+  %h1 My Registrations
+  - if @registrations.blank?
+    %p You haven't regisreted for any workshops yet.
+  - else
+    %table
+      %thead
+        %tr
+          %th Workshop
+          %th= sort_link 'Date', 'events.starts_at'
+          %th= sort_link 'Paid', 'registrations.amount_paid_in_cents'
+          %th Due
+          %th= sort_link 'Status', 'registrations.status'
+          %th
+      - if @registrations.total_pages > 1
+        %tfoot
+          %td{ colspan: 5 }= paginate @registrations
+      %tbody
+        - @registrations.each do |registration|
+          %tr
+            %td= link_to registration.event_workshop_name, registration.event_workshop
+            %td
+              %time.icon.event
+                = registration.event_starts_at.strftime '%b %e, %Y'
+            %td= registration.formatted_amount_paid
+            %td= registration.formatted_amount_due
+            %td= registration.status
+            %td.actions
+              %div
+                = link_to 'View', student_profile_registration_url(student_profile_id: current_user.student_profile_id, id: registration.id), class: 'btn secondary icon view'
+                = link_to 'Pay', '#', class: 'btn icon pay'

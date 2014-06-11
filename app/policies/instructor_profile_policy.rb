@@ -38,11 +38,11 @@ class InstructorProfilePolicy < Struct.new(:user, :instructor_profile)
   end
 
   def update?
-    !!user && user.admin?
+    !!user && (user.admin? || user == instructor_profile.user)
   end
 
   def edit?
-    !!user && user.admin?
+    !!user && (user.admin? || user == instructor_profile.user)
   end
 
   def destroy?

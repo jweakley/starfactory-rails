@@ -10,6 +10,7 @@ module ApplicationHelper
     if (classes & ['staticIndex', 'workshopsShow', 'tracksShow', 'eventsShow']).count > 0
       classes.push 'withSidebar'
     end
+    classes.push 'loggedIn' if logged_in?
     return classes
   end
 

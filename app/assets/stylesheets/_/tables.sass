@@ -113,7 +113,6 @@ tbody
             line-height: 2em
             margin: .5em
             font-size: $baseFontSize
-            overflow: hidden
             position: relative
             text-indent: -999em
             +transition(background .2s linear, color .2s linear)
@@ -125,10 +124,19 @@ tbody
                 right: 0
                 text-align: center
                 top: 0
+            &.btn
+                display: block
+                margin: .25em
+                text-indent: 0
+                width: auto
+                &:after
+                    line-height: 2em
             &.delete:before
                 content: '\f00d'
             &.edit:before
                 content: '\f040'
+            &.pay:before
+                content: '\f09d'
             &.registrations:before
                 content: '\f0c0'
             &.schedule:before
@@ -138,5 +146,18 @@ tbody
             &:hover,
             &:focus
                 background: $colorAccent
+            &[data-hint]:hover:after,
+            &[data-hint]:focus:after
+                background: #47494F
+                +border_radius(1em, 1em, 0, 1em)
+                bottom: 1.75em
+                color: #fff
+                content: attr(data-hint)
+                font-weight: $heavy
+                line-height: 1em
+                padding: .5em 1em
+                position: absolute
+                right: 1.75em
+                text-align: center
         a ~ a
             margin-left: 0

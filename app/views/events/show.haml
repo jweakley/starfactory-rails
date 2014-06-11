@@ -14,7 +14,7 @@
         - @event.instructor_profiles.each do |instructor|
           = link_to instructor.name, instructor
     %dt Length
-    %dd= @event.hours_long
+    %dd= @event.smart_length
 
 %aside.textual
   %time.big

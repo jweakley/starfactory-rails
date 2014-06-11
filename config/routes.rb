@@ -11,12 +11,14 @@ Starfactory::Application.routes.draw do
   resources :users
   resources :sessions
   resources :events do
-    resources :registrations, only: [:show, :edit]
+    resources :registrations, only: [:edit]
   end
   get 'events/:year/:month' => 'events#index', as: 'events_month'
   resources :instructor_profiles, path: 'instructors'
   resources :registrations, except: [:show, :new, :edit]
-  resources :student_profiles, path: 'students'
+  resources :student_profiles, path: 'students' do
+    resources :registrations, only: [:index, :show]
+  end
   resources :tracks
   resources :workshops, concerns: :votable
 

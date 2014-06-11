@@ -17,6 +17,7 @@ header
     nav
         position: absolute
         top: 0
+        z-index: 6
 
 @media screen and (min-width: 1236px)
     header nav
@@ -26,28 +27,95 @@ header
     header nav
         right: 35px
 
-@media screen and (min-width: 541px)
+@media screen and (max-width: 1235px) and (min-width: 600px)
+    body.loggedIn header nav
+        padding-right: 40px !important
+        dl
+            right: -30px !important
+
+@media screen and (min-width: 600px)
     header nav
         line-height: 70px
-        a
+        > a
             color: $colorText
             display: inline-block
             padding: 0 5px
+            position: relative
             +transition(color .2s linear, text-shadow .2s linear)
+            vertical-align: middle
+            z-index: 2
             &:hover,
             &:focus
                 color: $colorTextBold
                 text-shadow: 0 0 35px $colorAccent
         a ~ a
             margin-left: 1em
+        dl
+            display: inline-block
+            overflow: hidden
+            margin-left: 1em
+            min-width: 70px
+            padding: 70px 0 0
+            position: absolute
+            right: 0
+            top: 0
+            vertical-align: middle
+            width: auto
+            z-index: 1
+        dt
+            cursor: pointer
+            font-size: 2em
+            min-height: 60px
+            position: absolute
+            right: 0
+            text-indent: -999em
+            top: 0
+            &:before
+                +border_radius(3px, 3px, 0, 0)
+                content: '\f013'
+                line-height: 60px
+                padding: 0 0 5px
+                position: absolute
+                right: 0
+                text-align: center
+                top: 5px
+                width: 60px
+        dd
+            display: none
+            a
+                background: #EBEDF0
+                color: #2E3035
+                display: block
+                font-weight: $heavy
+                line-height: 60px
+                min-width: 10em
+                padding: 0 1.5em
+                text-align: right
+                white-space: nowrap
+                &:hover,
+                &:focus
+                    background: #fff
+                    color: $colorAccent
+            &:first-of-type a
+                +border_radius(3px, 0, 0, 0)
+            &:last-child a,
+            &:last-of-type a
+                +border_radius(0, 0, 3px, 3px)
+        &.open
+            dt:before
+                background: #EBEDF0
+                color: $colorAccentDarker
+            dd
+                display: block
+    body.loggedIn header nav
+        padding-right: 70px
 
-@media screen and (max-width: 541px)
+@media screen and (max-width: 599px)
     header nav
         overflow: hidden
         padding-top: 70px
         right: 0
         width: 70px
-        z-index: 6
         &:before
             background: #2E3035
             color: #fff
@@ -75,6 +143,8 @@ header
             &:focus
                 background: $colorAccent2Darker
                 +border_radius(3px)
+        dl dt
+            display: none
         &.open
             +box_shadow(0 0 50px #000)
             left: 0

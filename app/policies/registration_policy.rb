@@ -26,11 +26,11 @@ class RegistrationPolicy < Struct.new(:user, :registration)
   end
 
   def index?
-    false
+    !!user && (user.admin? || user.student?)
   end
 
   def show?
-    !!user && (user.admin? || user == registration.student_profile.user)
+    !!user && (user.admin? || user.student?)
   end
 
   def create?

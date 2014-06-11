@@ -2,20 +2,35 @@ class RegistrationsController < ApplicationController
   respond_to :html
 
   before_action :load_registration, only: [:show, :edit, :update, :destroy]
-  before_action :load_event, only: [:show, :edit]
   before_action :add_breadcrumbs
 
+  # GET /students/:id/registrations
+  def index
+    @student_profile = StudentProfile.find(params[:student_profile_id])
+    authorize @student_profile, :edit?
+    @registrations = Registration
+      .joins(:event)
+      .joins(:student_profile)
+      .where(student_profile_id: @student_profile.id)
+      .order("#{sort_column} #{sort_direction}")
+      .page params[:page]
+    authorize @registrations
+    add_breadcrumb 'My Registrations'
+    respond_with @registrations
+  end
+
   # GET /registrations/1
-  # GET /registrations/1.json
   def show
     @page_title = 'Registration'
-    add_breadcrumb 'Registration'
+    add_breadcrumb 'My Registrations', student_profile_registrations_url(student_profile_id: current_user.student_profile_id)
+    add_breadcrumb @registration.event_workshop_name
     authorize @registration
     respond_with @registration
   end
 
   # GET /registrations/1/edit
   def edit
+    @event = Event.find(params[:event_id])
     add_breadcrumb 'Edit Registration'
     authorize @registration
     respond_with @registration
@@ -54,10 +69,6 @@ class RegistrationsController < ApplicationController
 private
   def load_registration
     @registration = Registration.find(params[:id])
-  end
-
-  def load_event
-    @event = Event.find(params[:event_id])
   end
 
   def add_breadcrumbs

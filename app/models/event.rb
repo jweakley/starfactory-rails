@@ -58,9 +58,16 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def hours_long
-    ActionController::Base.helpers.pluralize(
-      ("%g" % ("%.2f" % ((ends_at - starts_at) / 3600))), 'hour', 'hours')
+  def smart_length
+    hours = (ends_at - starts_at) / 3600
+    if hours < 24
+      ActionController::Base.helpers.pluralize(
+        ("%g" % ("%.2f" % hours)), 'hour', 'hours')
+    else
+      days = (hours / 24).ceil
+      ActionController::Base.helpers.pluralize(
+        ("%g" % ("%.2f" % days)), 'day', 'days')
+    end
   end
 
   def starts_at_day

@@ -15,20 +15,22 @@ class Registration < ActiveRecord::Base
   belongs_to :event, counter_cache: true
   belongs_to :student_profile
 
-  VALID_STATUSES = %w(Pending Complete Expired)
+  VALID_STATUSES = %w(Pending Complete Passed)
   DEFAULT_SORT_COLUMN = 'registrations.status'
 
   scope :pending, -> { where { status.eq 'Pending' } }
   scope :complete, -> { where { status.eq 'Complete' } }
-  scope :expired, -> { where { status.eq 'Expired' } }
+  scope :passed, -> { where { status.eq 'Passed' } }
 
   delegate :id, to: :event, prefix: true
   delegate :id, to: :student_profile, prefix: true
   delegate :name, to: :student_profile, prefix: true
+  delegate :workshop, to: :event, prefix: true
   delegate :workshop_name, to: :event, prefix: true
   delegate :starts_at, to: :event, prefix: true
   delegate :ends_at, to: :event, prefix: true
-  delegate :hours_long, to: :event, prefix: true
+  delegate :smart_length, to: :event, prefix: true
+  delegate :instructor_profiles, to: :event, prefix: true
 
   validates_uniqueness_of :student_profile_id, scope: :event_id
 

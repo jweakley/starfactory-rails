@@ -1,3 +1,18 @@
 %section.textual
-  %h1 Registration
-  %pre= YAML::dump @registration
+  %h1= @registration.student_profile_name
+  %dl
+    %dt Workshop
+    %dd= link_to @registration.event_workshop_name, @registration.event_workshop
+    %dt Instructor
+    %dd
+      - @registration.event_instructor_profiles.each do |instructor_profile|
+        = link_to instructor_profile.name, instructor_profile
+    %dt Start
+    %dd
+      %strong= @registration.event_starts_at.strftime '%b %e, %Y @ %l:%M %P'
+    %dt Length
+    %dd= @registration.event_smart_length
+    %dt Paid
+    %dd= @registration.formatted_amount_paid
+    %dt Due
+    %dd= @registration.formatted_amount_due
